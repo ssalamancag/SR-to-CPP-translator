@@ -57,7 +57,99 @@ body_only:
 	|   process
 	|   procedure
 	|   initial_block
-	|   final_block	
+	|   final_block
+	;
+
+stmt:
+	    skip_stmt
+	|   stop_stmt
+	|   exit_stmt
+	|   next_stmt
+	|   return_stmt
+	|   reply_stmt
+	|   forward_stmt
+	|   send_stmt
+	|   explicit_call
+	|   destroy_stmt
+	|   begin_end
+	|   if_stmt
+	|   do_stmt
+	/*|   for_all_stmt
+	|   v_stmt
+	|   input_stmt
+	|   receive_stmt
+	|   p_stmt
+	|   concurrent_stmt
+	*/
+	;
+
+stop_stmt:
+	    TK_STOP exit_code_opt
+	;
+
+exit_code_opt:
+	    vacio
+	|   TK_LPAREN expr TK_RPAREN
+	;
+forward_stmt:
+	    TK_FORWARD invocation
+	    ;
+
+send_stmt:
+	    TK_SEND invocation
+	    ;
+
+explicit_call:
+	    TK_CALL invocation
+    ;
+
+destroy_stmt:
+	    TK_DESTROY expr
+	    ;
+
+begin_end:
+	    TK_BEGIN block TK_END
+	    ;
+
+if_stmt:
+	    TK_IF guarded_cmd_lp else_cmd_opt TK_FI
+	    ;
+
+do_stmt:
+	    TK_DO guarded_cmd_lp else_cmd_opt TK_OD
+	;
+
+guarded_cmd_lp:
+	    guarded_cmd
+	|   guarded_cmd_lp TK_SQUARE guarded_cmd
+	;
+
+guarded_cmd:
+	    expr TK_ARROW block
+	;
+
+else_cmd_opt:
+	    vacio
+	|   TK_SQUARE TK_ELSE TK_ARROW block
+	;
+
+invocation:
+	    expr paren_list
+	    ;
+
+
+paren_list:
+	    TK_LPAREN paren_item_ls TK_RPAREN
+	    ;
+
+paren_item_ls:
+	    vacio
+	|   expr_lp
+	;
+
+expr_lp:
+	    expr
+	|   expr_lp TK_COMMA expr
 	;
 
 comp_params:
@@ -115,7 +207,7 @@ type_decl: TK_TYPE TK_ID TK_EQ type type_restriction
     	    ;
 type_restriction:
         vacio
-	|   TK_LBRACE TK_ID TK_RBRACE	{ WARN("type restriction ignored"); }
+	|   TK_LBRACE TK_ID TK_RBRACE
 	;
 
 type:
@@ -135,11 +227,11 @@ unsub_type:
 	;
 
 basic_type:
-	    TK_BOOL				{ $$ = newnode (O_BOOL); }
-	|   TK_CHAR				{ $$ = newnode (O_CHAR); }
-	|   TK_INT				{ $$ = newnode (O_INT); }
-	|   TK_FILE				{ $$ = newnode (O_FFILE); }
-	|   TK_REAL				{ $$ = newnode (O_REAL); }
+	    TK_BOOL
+	|   TK_CHAR
+	|   TK_INT
+	|   TK_FILE
+	|   TK_REAL
 	;
 
 param_kind_opt:
@@ -224,6 +316,24 @@ id_lp:
     |   id_lp TK_COMMA TK_ID
     ;
 
+skip_stmt:
+	    TK_SKIP
+	    ;
+
+exit_stmt:
+	    TK_EXIT
+	    ;
+
+next_stmt:
+	    TK_NEXT
+	    ;
+
+return_stmt:
+	    TK_RETURN
+	    ;
+reply_stmt:
+	    TK_REPLY
+	    ;
 expr: 'expresion';
 block: falta;
 
@@ -245,7 +355,25 @@ TK_COMMA: ',';
 TK_ASTER: '*';
 TK_COLON: ':';
 TK_EQ: '=';
+TK_ARROW: '->';
+TK_SQUARE: '[]';
 //////////////////////////////////////////
+TK_ELSE: 'else';
+TK_IF: 'if';
+TK_FI: 'fi';
+TK_DO: 'do';
+TK_OD: 'od';
+TK_SKIP: 'skip';
+TK_EXIT: 'exit';
+TK_NEXT: 'next';
+TK_RETURN: 'return';
+TK_REPLY: 'reply';
+TK_FORWARD: 'forward';
+TK_SEND: 'send';
+TK_CALL: 'call';
+TK_DESTROY: 'destroy';
+TK_BEGIN: 'begin';
+TK_END: 'emd';
 TK_GLOBAL: 'global';
 TK_BODY: 'body';
 TK_PROC: 'proc';
