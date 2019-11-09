@@ -332,6 +332,7 @@ reply_stmt:
 expr:
 	    TK_ID
 	|   NUM
+	|   CADENA
 	|   literal
 	//|   invocation
 	|   constructor
@@ -507,7 +508,7 @@ op_restriction:
 	;
 
 end_id:
-	    TK_END id_opt			{ $$ = $2; }
+	    TK_END id_opt
 	;
 
 id_opt:
@@ -646,6 +647,7 @@ TK_ON: 'on';
 TK_STOP: 'stop';
 
 TK_ID: [a-zA-Z]+ ;
+CADENA: '"'[a-zA-Z0-9 ]+'"';
 NUM:[0-9]+;
 ESP : [ \t\r\n]+ -> skip ;
 LINE_COMMENT: '#' ~[\n]+ -> skip;
