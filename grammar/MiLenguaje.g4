@@ -25,13 +25,17 @@ spec_stmt:
 
 spec_body:
         vacio
-	|   TK_BODY TK_ID maybe_params body_stmt_ls end_id
-	|   TK_BODY TK_ID maybe_params TK_SEPARATE
+	|   TK_BODY TK_ID maybe_params spec_body_comp
 	;
 
+spec_body_comp:
+        body_stmt_ls end_id
+    |   TK_SEPARATE
+    ;
+
 maybe_params:
-	    vacio
-	|   comp_params
+	    comp_params
+	|   vacio
 	;
 
 spec_stmt_ls:
@@ -41,7 +45,7 @@ spec_stmt_ls:
 
 body_stmt_ls:
 	    body_stmt
-	|   body_stmt_ls TK_SEPARATOR body_stmt
+	|   body_stmt_ls TK_SEPARATOR? body_stmt
 	;
 
 body_stmt:
@@ -51,10 +55,14 @@ body_stmt:
 	|   extend_clause
 	;
 
+separator_optional:
+        TK_SEPARATOR
+    |   vacio
+    ;
 body_only:
 	    stmt
 	|   proc
-	/*|   process
+/*	|   process
 	|   procedure
 	|   initial_block
 	|   final_block
@@ -68,9 +76,10 @@ stmt:
 	|   next_stmt
 	|   return_stmt
 	|   reply_stmt
-	|   forward_stmt
-	|   send_stmt
-	|   explicit_call
+	|   function_stmt
+	//|   forward_stmt
+	//|   send_stmt
+	//|   explicit_call
 	|   destroy_stmt
 	|   begin_end
 	|   if_stmt
@@ -84,6 +93,9 @@ stmt:
 	*/
 	;
 
+function_stmt:
+        TK_ID TK_LPAREN bound_lp TK_RPAREN
+        ;
 stop_stmt:
 	    TK_STOP exit_code_opt
 	;
@@ -92,6 +104,7 @@ exit_code_opt:
 	    vacio
 	|   TK_LPAREN expr TK_RPAREN
 	;
+	/*
 forward_stmt:
 	    TK_FORWARD invocation
 	    ;
@@ -103,7 +116,7 @@ send_stmt:
 explicit_call:
 	    TK_CALL invocation
     ;
-
+*/
 destroy_stmt:
 	    TK_DESTROY expr
 	    ;
@@ -133,12 +146,12 @@ else_cmd_opt:
 	    vacio
 	|   TK_SQUARE TK_ELSE TK_ARROW block
 	;
-
+/*
 invocation:
 	    expr paren_list
 	    ;
 
-
+*/
 paren_list:
 	    TK_LPAREN paren_item_ls TK_RPAREN
 	    ;
@@ -315,14 +328,55 @@ return_stmt:
 reply_stmt:
 	    TK_REPLY
 	    ;
+
 expr:
 	    TK_ID
+	|   NUM
 	|   literal
-	|   invocation
+	//|   invocation
 	|   constructor
-	|   binary_expr
+	//|   binary_expr
 	|   prefix_expr
-	|   suffix_expr
+	////sufix
+    |   expr TK_INCR
+    |   expr TK_DECR
+    |   expr TK_HAT
+    |   expr TK_PERIOD TK_ID
+    |   expr TK_LBRACKET bound_lp TK_RBRACKET
+	// binary
+    |   expr TK_EXPON	expr
+    |   expr TK_ASTER	expr
+    |   expr TK_DIV		expr
+    |   expr TK_MOD		expr
+    |   expr TK_REMDR	expr
+    |   expr TK_PLUS	expr
+    |   expr TK_MINUS	expr
+    |   expr TK_CONCAT	expr
+    |   expr TK_EQ		expr
+    |   expr TK_NE		expr
+    |   expr TK_GE		expr
+    |   expr TK_LE		expr
+    |   expr TK_GT		expr
+    |   expr TK_LT		expr
+    |   expr TK_AND		expr
+    |   expr TK_OR		expr
+    |   expr TK_XOR		expr
+    |   expr TK_RSHIFT	expr
+    |   expr TK_LSHIFT	expr
+    |   expr TK_SWAP	expr
+    |   expr TK_ASSIGN	expr
+    |   expr TK_AUG_PLUS	expr
+    |   expr TK_AUG_MINUS	expr
+    |   expr TK_AUG_ASTER	expr
+    |   expr TK_AUG_DIV	expr
+    |   expr TK_AUG_REMDR	expr
+    |   expr TK_AUG_EXPON	expr
+    |   expr TK_AUG_OR	expr
+    |   expr TK_AUG_AND	expr
+    |   expr TK_AUG_CONCAT	expr
+    |   expr TK_AUG_RSHIFT	expr
+    |   expr TK_AUG_LSHIFT	expr
+	///
 	|   create_expr
 	;
 
@@ -336,51 +390,8 @@ literal:
 	|   TK_FLIT
 	;
 
-suffix_expr:
-	    expr TK_INCR
-	|   expr TK_DECR
-	|   expr TK_HAT
-	|   expr TK_PERIOD TK_ID
-	|   expr TK_LBRACKET bound_lp TK_RBRACKET
-	;
-
 create_expr:
 	    TK_CREATE create_call location_opt
-	;
-
-binary_expr:
-	    expr TK_EXPON	expr
-	|   expr TK_ASTER	expr
-	|   expr TK_DIV		expr
-	|   expr TK_MOD		expr
-	|   expr TK_REMDR	expr
-	|   expr TK_PLUS	expr
-	|   expr TK_MINUS	expr
-	|   expr TK_CONCAT	expr
-	|   expr TK_EQ		expr
-	|   expr TK_NE		expr
-	|   expr TK_GE		expr
-	|   expr TK_LE		expr
-	|   expr TK_GT		expr
-	|   expr TK_LT		expr
-	|   expr TK_AND		expr
-	|   expr TK_OR		expr
-	|   expr TK_XOR		expr
-	|   expr TK_RSHIFT	expr
-	|   expr TK_LSHIFT	expr
-	|   expr TK_SWAP	expr
-	|   expr TK_ASSIGN	expr
-	|   expr TK_AUG_PLUS	expr
-	|   expr TK_AUG_MINUS	expr
-	|   expr TK_AUG_ASTER	expr
-	|   expr TK_AUG_DIV	expr
-	|   expr TK_AUG_REMDR	expr
-	|   expr TK_AUG_EXPON	expr
-	|   expr TK_AUG_OR	expr
-	|   expr TK_AUG_AND	expr
-	|   expr TK_AUG_CONCAT	expr
-	|   expr TK_AUG_RSHIFT	expr
-	|   expr TK_AUG_LSHIFT	expr
 	;
 
 create_call:
@@ -504,7 +515,22 @@ id_opt:
 	|   TK_ID
 	;
 
-block: falta;
+block:
+	    block_items
+	;
+
+block_items:
+	    block_item
+	|   block_items TK_SEPARATOR block_item
+	;
+
+block_item:
+	    vacio
+	|   decl
+	|   stmt
+	|   expr
+	|   import_clause
+	;
 
 falta: 'falta implementar'
         | vacio ;
@@ -559,7 +585,18 @@ TK_AUG_AND: '&:=';
 TK_AUG_CONCAT: '||:=';
 TK_AUG_RSHIFT: '>>:=';
 TK_AUG_LSHIFT: '<<:=';
+TK_NOT: '~';
+TK_ADDR: '@';
+TK_QMARK: '?';
+
 //////////////////////////////////////////
+
+TK_LOW: 'low';
+TK_HIGH: 'high';
+TK_NEW: 'new';
+TK_SEM:'sem';
+TK_OP: 'op';
+TK_BOGUS: 'bogus';
 TK_ILIT: 'ilit';
 TK_RLIT: 'rlit';
 TK_CLIT: 'Clit';
@@ -582,7 +619,7 @@ TK_SEND: 'send';
 TK_CALL: 'call';
 TK_DESTROY: 'destroy';
 TK_BEGIN: 'begin';
-TK_END: 'emd';
+TK_END: 'end';
 TK_GLOBAL: 'global';
 TK_BODY: 'body';
 TK_PROC: 'proc';
@@ -609,5 +646,6 @@ TK_ON: 'on';
 TK_STOP: 'stop';
 
 TK_ID: [a-zA-Z]+ ;
+NUM:[0-9]+;
 ESP : [ \t\r\n]+ -> skip ;
 LINE_COMMENT: '#' ~[\n]+ -> skip;
