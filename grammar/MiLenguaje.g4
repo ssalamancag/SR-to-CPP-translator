@@ -13,7 +13,7 @@ resource_specification: falta;
 
 resource_body: falta;
 
-proc: TK_PROC ID TK_LPAREN falta TK_RPAREN falta block 'end'
+proc: TK_PROC TK_ID TK_LPAREN falta TK_RPAREN falta block 'end'
     ;
 
 
@@ -54,10 +54,11 @@ body_stmt:
 body_only:
 	    stmt
 	|   proc
-	|   process
+	/*|   process
 	|   procedure
 	|   initial_block
 	|   final_block
+*/
 	;
 
 stmt:
@@ -290,26 +291,6 @@ id_subs:
             TK_ID
         |   TK_ID subscripts
         ;
-subscripts:
-	    bracketed_list
-	|   bracketed_list subscripts
-	;
-
-bracketed_list:
-	    TK_LBRACKET bound_lp TK_RBRACKET	{ $$ = $2; }
-	;
-bound_lp:
-	    bounds
-	|   bound_lp TK_COMMA bounds
-	;
-
-bounds:
-	    bound
-	|   bound TK_COLON bound
-	;
-bound:
-        expr
-     |  TK_ASTER;
 
 id_lp:
         TK_ID
@@ -334,7 +315,195 @@ return_stmt:
 reply_stmt:
 	    TK_REPLY
 	    ;
-expr: 'expresion';
+expr:
+	    TK_ID
+	|   literal
+	|   invocation
+	|   constructor
+	|   binary_expr
+	|   prefix_expr
+	|   suffix_expr
+	|   create_expr
+	;
+
+literal:
+	    TK_ILIT
+	|   TK_RLIT
+	|   TK_BLIT
+	|   TK_CLIT
+	|   TK_SLIT
+	|   TK_NLIT
+	|   TK_FLIT
+	;
+
+suffix_expr:
+	    expr TK_INCR
+	|   expr TK_DECR
+	|   expr TK_HAT
+	|   expr TK_PERIOD TK_ID
+	|   expr TK_LBRACKET bound_lp TK_RBRACKET
+	;
+
+create_expr:
+	    TK_CREATE create_call location_opt
+	;
+
+binary_expr:
+	    expr TK_EXPON	expr
+	|   expr TK_ASTER	expr
+	|   expr TK_DIV		expr
+	|   expr TK_MOD		expr
+	|   expr TK_REMDR	expr
+	|   expr TK_PLUS	expr
+	|   expr TK_MINUS	expr
+	|   expr TK_CONCAT	expr
+	|   expr TK_EQ		expr
+	|   expr TK_NE		expr
+	|   expr TK_GE		expr
+	|   expr TK_LE		expr
+	|   expr TK_GT		expr
+	|   expr TK_LT		expr
+	|   expr TK_AND		expr
+	|   expr TK_OR		expr
+	|   expr TK_XOR		expr
+	|   expr TK_RSHIFT	expr
+	|   expr TK_LSHIFT	expr
+	|   expr TK_SWAP	expr
+	|   expr TK_ASSIGN	expr
+	|   expr TK_AUG_PLUS	expr
+	|   expr TK_AUG_MINUS	expr
+	|   expr TK_AUG_ASTER	expr
+	|   expr TK_AUG_DIV	expr
+	|   expr TK_AUG_REMDR	expr
+	|   expr TK_AUG_EXPON	expr
+	|   expr TK_AUG_OR	expr
+	|   expr TK_AUG_AND	expr
+	|   expr TK_AUG_CONCAT	expr
+	|   expr TK_AUG_RSHIFT	expr
+	|   expr TK_AUG_LSHIFT	expr
+	;
+
+create_call:
+	    rsrc_name paren_list
+	    ;
+
+rsrc_name:
+	    TK_ID				{ $$ = $1; }
+	|   TK_VM
+	;
+
+location_opt:
+	    vacio
+	|   TK_ON expr
+	;
+constructor:
+	    TK_LPAREN constr_item_lp TK_RPAREN
+	;
+
+constr_item_lp:
+	    constr_item
+	|   constr_item_lp TK_COMMA constr_item
+	;
+
+constr_item:
+	    expr
+	|   TK_LBRACKET expr TK_RBRACKET expr
+	;
+
+prefix_expr:
+	    TK_NOT	expr
+	|   TK_PLUS	expr
+	|   TK_MINUS	expr
+	|   TK_ADDR	expr
+	|   TK_QMARK expr
+	|   TK_INCR expr
+	|   TK_DECR expr
+	|   basic_type paren_expr
+	|   TK_STRING paren_expr  TK_NOT
+	|   TK_LOW  TK_LPAREN type TK_RPAREN
+	|   TK_HIGH TK_LPAREN type TK_RPAREN
+	|   TK_NEW  TK_LPAREN subscripts_opt new_item TK_RPAREN
+	;
+
+
+paren_expr:
+	    TK_LPAREN expr TK_RPAREN
+	;
+
+new_item:
+	    unsub_type
+	|   TK_SEM sem_proto
+	|   TK_OP op_prototype
+	;
+
+sem_proto:
+	    vacio
+	   ;
+
+op_prototype:
+	    prototype op_restriction_opt
+	    ;
+
+op_restriction_opt:
+	    vacio
+	|   TK_LBRACE op_restriction TK_RBRACE
+	;
+
+prototype:
+	    parameters return_spec_opt
+	    ;
+
+return_spec_opt:
+	    vacio
+
+	|   TK_RETURNS type
+	|   TK_RETURNS id_subs TK_COLON type
+	|   TK_RETURNS TK_ID TK_BOGUS
+	;
+
+subscripts_opt:
+	    vacio
+	|   subscripts				{ $$ = $1; }
+	;
+
+subscripts:
+	    bracketed_list
+	|   bracketed_list subscripts
+	;
+
+bracketed_list:
+	    TK_LBRACKET bound_lp TK_RBRACKET	{ $$ = $2; }
+	;
+bound_lp:
+	    bounds
+	|   bound_lp TK_COMMA bounds
+	;
+
+bounds:
+	    bound
+	|   bound TK_COLON bound
+	;
+bound:
+        expr
+     |  TK_ASTER
+     ;
+
+op_restriction:
+	    TK_CALL
+	|   TK_SEND
+	|   TK_CALL TK_COMMA TK_SEND
+	|   TK_SEND TK_COMMA TK_CALL
+	;
+
+end_id:
+	    TK_END id_opt			{ $$ = $2; }
+	;
+
+id_opt:
+	    vacio
+	|   TK_ID
+	;
+
 block: falta;
 
 falta: 'falta implementar'
@@ -343,6 +512,10 @@ falta: 'falta implementar'
 
 vacio: ;
 
+TK_PERIOD: '.';
+TK_INCR: '++';
+TK_DECR: '--';
+TK_HAT: '^';
 TK_ASSIGN: ':=';
 TK_SEPARATOR: ';';
 TK_LBRACKET: '[';
@@ -357,7 +530,43 @@ TK_COLON: ':';
 TK_EQ: '=';
 TK_ARROW: '->';
 TK_SQUARE: '[]';
+TK_EXPON: '**';
+TK_DIV: '/';
+TK_MOD: 'mod';
+TK_REMDR: '%';
+TK_PLUS: '+';
+TK_MINUS: '-';
+TK_CONCAT: '||';
+TK_NE: '!=';
+TK_GE: '>=';
+TK_LE: '<=';
+TK_GT: '>';
+TK_LT: '<';
+TK_AND: '&';
+TK_OR: '|';
+TK_XOR: 'xor';
+TK_RSHIFT: '>>';
+TK_LSHIFT: '<<';
+TK_SWAP: ':=:';
+TK_AUG_PLUS: '+:=';
+TK_AUG_MINUS: '-:=';
+TK_AUG_ASTER: '*:=';
+TK_AUG_DIV: '/:=';
+TK_AUG_REMDR: '%:=';
+TK_AUG_EXPON: '**:=';
+TK_AUG_OR: '|:=';
+TK_AUG_AND: '&:=';
+TK_AUG_CONCAT: '||:=';
+TK_AUG_RSHIFT: '>>:=';
+TK_AUG_LSHIFT: '<<:=';
 //////////////////////////////////////////
+TK_ILIT: 'ilit';
+TK_RLIT: 'rlit';
+TK_CLIT: 'Clit';
+TK_SLIT: 'Slit';
+TK_NLIT: 'nlit';
+TK_BLIT: 'blit';
+TK_FLIT: 'flit';
 TK_ELSE: 'else';
 TK_IF: 'if';
 TK_FI: 'fi';
@@ -393,6 +602,11 @@ TK_EXTEND: 'extend';
 TK_IMPORT: 'import';
 TK_CONST: 'const';
 TK_ENUM: 'enum';
+TK_RETURNS: 'returns';
+TK_CREATE: 'create';
+TK_VM: 'vm';
+TK_ON: 'on';
+TK_STOP: 'stop';
 
 TK_ID: [a-zA-Z]+ ;
 ESP : [ \t\r\n]+ -> skip ;
