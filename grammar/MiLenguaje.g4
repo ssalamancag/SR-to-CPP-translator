@@ -1,8 +1,7 @@
 grammar MiLenguaje;
 
-intit_component: componet;
-componet: global
-        | resource_specification
+inicio: componet;
+componet: global        | resource_specification
         | resource_body
         | proc
         | block
@@ -400,7 +399,7 @@ create_call:
 	    ;
 
 rsrc_name:
-	    TK_ID				{ $$ = $1; }
+	    TK_ID
 	|   TK_VM
 	;
 
@@ -475,7 +474,7 @@ return_spec_opt:
 
 subscripts_opt:
 	    vacio
-	|   subscripts				{ $$ = $1; }
+	|   subscripts
 	;
 
 subscripts:
@@ -484,7 +483,7 @@ subscripts:
 	;
 
 bracketed_list:
-	    TK_LBRACKET bound_lp TK_RBRACKET	{ $$ = $2; }
+	    TK_LBRACKET bound_lp TK_RBRACKET
 	;
 bound_lp:
 	    bounds

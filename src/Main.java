@@ -15,7 +15,7 @@ public class Main {
             CommonTokenStream tokens = new CommonTokenStream(lexer);
             // Crear el objeto correspondiente al analizador sintáctico que se alimenta a partir del buffer de tokens
             MiLenguajeParser parser = new MiLenguajeParser(tokens);
-            ParseTree tree = parser.inicio(); // Iniciar el analisis sintáctico en la regla inicial: r
+            ParseTree tree = parser.inicio();
             System.out.println(tree.toStringTree(parser)); // imprime el arbol al estilo LISP
         } catch (Exception e){
             System.err.println("Error (Test): " + e);

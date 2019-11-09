@@ -3,7 +3,29 @@
   <component name="ChangeListManager">
     <list default="true" id="d557adf6-bcc5-44c1-8fc8-bdcf556e1c87" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/MiLenguaje.interp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/MiLenguaje.tokens" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/MiLenguajeBaseListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/MiLenguajeBaseVisitor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/MiLenguajeLexer.interp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/MiLenguajeLexer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/MiLenguajeLexer.tokens" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/MiLenguajeListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/MiLenguajeParser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gen/MiLenguajeVisitor.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/grammar/MiLenguaje.g4" beforeDir="false" afterPath="$PROJECT_DIR$/grammar/MiLenguaje.g4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/test2/MiLenguaje.interp" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/test2/MiLenguaje.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/test2/MiLenguaje.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/test2/MiLenguaje.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/test2/MiLenguajeBaseListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/test2/MiLenguajeBaseListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/test2/MiLenguajeBaseVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/test2/MiLenguajeBaseVisitor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/test2/MiLenguajeLexer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/test2/MiLenguajeLexer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/test2/MiLenguajeLexer.interp" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/test2/MiLenguajeLexer.interp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/test2/MiLenguajeLexer.tokens" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/test2/MiLenguajeLexer.tokens" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/test2/MiLenguajeListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/test2/MiLenguajeListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/test2/MiLenguajeParser$InicioContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/test2/MiLenguajeParser$InicioContext.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/test2/MiLenguajeParser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/test2/MiLenguajeParser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/test2/MiLenguajeVisitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/test2/MiLenguajeVisitor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -66,7 +88,7 @@
       <updated>1573229994715</updated>
       <workItem from="1573230000591" duration="14415000" />
       <workItem from="1573306286522" duration="5253000" />
-      <workItem from="1573314061517" duration="107000" />
+      <workItem from="1573314061517" duration="1742000" />
     </task>
     <servers />
   </component>
