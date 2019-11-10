@@ -1,25 +1,81 @@
 grammar MiLenguaje;
 
 inicio: componet;
-componet: global        | resource_specification
+componet: global
+        | resource_specification
         | resource_body
         | proc
         | block
         ;
 global: TK_GLOBAL TK_ID spec_stmt_ls spec_body;
 
-resource_specification: falta;
+comp_label:
+            TK_GLOBAL TK_ID
+        |   TK_RESOURCE TK_ID
+        ;
+
+resource_specification: TK_RESOURCE TK_ID parameters spec_stmt_ls spec_body;
 
 resource_body: falta;
 
-proc: TK_PROC TK_ID TK_LPAREN falta TK_RPAREN falta block 'end'
+proc: TK_PROC TK_ID param_names block end_id
     ;
 
+process:
+	    TK_PROCESS TK_ID return_spec_null quantifiers_opt
+		block
+	    end_id
+	;
+
+procedure:
+        TK_PROCEDURE TK_ID prototype block end_id
+    ;
+
+quantifiers_opt:
+	    vacio
+	|   TK_LPAREN quantifier_lp TK_RPAREN
+	;
+
+quantifier_lp:
+	    quantifier
+	|   quantifier_lp TK_COMMA quantifier
+	;
+
+quantifier:
+	    TK_ID TK_ASSIGN expr direction expr step_opt such_that_opt
+	;
+
+direction:
+	    TK_TO
+	|   TK_DOWNTO
+	;
+
+step_opt:
+	    vacio
+	|   TK_BY expr
+	;
+such_that_opt:
+	    vacio
+	|   TK_SUCHTHAT expr
+	;
+
+return_spec_null:
+        vacio
+        ;
+
+param_names:
+	    TK_LPAREN id_ls TK_RPAREN return_name_opt
+	;
+
+return_name_opt:
+	    vacio
+	|   TK_RETURNS TK_ID
+	;
 
 spec_stmt:
 	    common_stmt
 	|   extend_clause
-	//|   body_only
+	|   body_only
 	;
 
 spec_body:
@@ -61,9 +117,9 @@ separator_optional:
 body_only:
 	    stmt
 	|   proc
-/*	|   process
+	|   process
 	|   procedure
-	|   initial_block
+/*	|   initial_block
 	|   final_block
 */
 	;
@@ -103,19 +159,7 @@ exit_code_opt:
 	    vacio
 	|   TK_LPAREN expr TK_RPAREN
 	;
-	/*
-forward_stmt:
-	    TK_FORWARD invocation
-	    ;
 
-send_stmt:
-	    TK_SEND invocation
-	    ;
-
-explicit_call:
-	    TK_CALL invocation
-    ;
-*/
 destroy_stmt:
 	    TK_DESTROY expr
 	    ;
@@ -138,7 +182,8 @@ guarded_cmd_lp:
 	;
 
 guarded_cmd:
-	    expr TK_ARROW block
+	        expr TK_OR_ block
+	    |   expr TK_ARROW block
 	;
 
 else_cmd_opt:
@@ -190,7 +235,7 @@ param_spec:
 	;
 
 common_stmt:
-    // vacio |
+    // vacio |  NO QUITAR ESTE COMENTARIO
           decl
 	|   import_clause
 	;
@@ -334,7 +379,8 @@ expr:
 	|   CADENA
 	|   literal
 	//|   invocation
-	|   constructor
+	|   constructor expr
+	|   TK_LPAREN constr_item_lp TK_RPAREN
 	//|   binary_expr
 	|   prefix_expr
 	////sufix
@@ -346,6 +392,7 @@ expr:
 	// binary
     |   expr TK_EXPON	expr
     |   expr TK_ASTER	expr
+    |   expr TK_ASTER	expr    constructor
     |   expr TK_DIV		expr
     |   expr TK_MOD		expr
     |   expr TK_REMDR	expr
@@ -360,6 +407,7 @@ expr:
     |   expr TK_LT		expr
     |   expr TK_AND		expr
     |   expr TK_OR		expr
+    |   expr TK_OR_		expr
     |   expr TK_XOR		expr
     |   expr TK_RSHIFT	expr
     |   expr TK_LSHIFT	expr
@@ -497,6 +545,7 @@ bounds:
 bound:
         expr
      |  TK_ASTER
+     |  vacio
      ;
 
 op_restriction:
@@ -531,6 +580,11 @@ block_item:
 	|   expr
 	|   import_clause
 	;
+
+id_ls:
+        id_lp
+    |   vacio
+    ;
 
 falta: 'falta implementar'
         | vacio ;
@@ -590,7 +644,13 @@ TK_ADDR: '@';
 TK_QMARK: '?';
 
 //////////////////////////////////////////
-
+TK_OR_: 'or';
+TK_PROCESS: 'process';
+TK_PROCEDURE: 'procedure';
+TK_BY: 'by';
+TK_TO: 'to';
+TK_SUCHTHAT: 'suchthat';
+TK_DOWNTO: 'downto';
 TK_LOW: 'low';
 TK_HIGH: 'high';
 TK_NEW: 'new';
@@ -621,6 +681,7 @@ TK_DESTROY: 'destroy';
 TK_BEGIN: 'begin';
 TK_END: 'end';
 TK_GLOBAL: 'global';
+TK_RESOURCE: 'resource';
 TK_BODY: 'body';
 TK_PROC: 'proc';
 TK_TYPE: 'type';
@@ -646,7 +707,7 @@ TK_ON: 'on';
 TK_STOP: 'stop';
 
 TK_ID: [a-zA-Z]+ ;
-CADENA: '"'[a-zA-Z0-9 ]+'"';
+CADENA: ('"' .*? '"' | '“' .*? '”' | '\'' .*? '\'');
 NUM:[0-9]+;
 ESP : [ \t\r\n]+ -> skip ;
 LINE_COMMENT: '#' ~[\n]+ -> skip;
