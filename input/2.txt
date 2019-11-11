@@ -8,9 +8,9 @@ global sizes
 body sizes
    getarg(1, N); getarg(2, PR); S := N/PR
    if N mod PR != 0 ->
-     #v("N must be a multiple of PR"); stop (1)
+     v("N must be a multiple of PR"); stop (1)
    fi
    if M mod PR != 0 ->
-
+        write("N must be a multiple of PR"); stop (1)
    fi
 end

@@ -14,11 +14,11 @@ comp_label:
         |   TK_RESOURCE TK_ID
         ;
 
-resource_specification: TK_RESOURCE TK_ID parameters spec_stmt_ls spec_body;
+resource_specification: TK_RESOURCE TK_ID parameters? spec_stmt_ls spec_body end_id?;
 
 resource_body: falta;
 
-proc: TK_PROC TK_ID param_names block end_id
+proc: TK_PROC TK_ID param_names spec_stmt_ls spec_body end_id
     ;
 
 process:
@@ -75,7 +75,7 @@ return_name_opt:
 spec_stmt:
 	    common_stmt
 	|   extend_clause
-	|   body_only
+	|   body_stmt
 	;
 
 spec_body:
@@ -94,8 +94,10 @@ maybe_params:
 	;
 
 spec_stmt_ls:
-        spec_stmt
+
+         spec_stmt
         | spec_stmt_ls TK_SEPARATOR? spec_stmt
+        | spec_stmt_ls spec_stmt
     ;
 
 body_stmt_ls:
@@ -119,9 +121,27 @@ body_only:
 	|   proc
 	|   process
 	|   procedure
-/*	|   initial_block
+	|   initial_block
 	|   final_block
-*/
+	;
+
+initial_block:
+
+	    TK_INITIAL block TK_END initial_opt
+	;
+
+final_block:
+	    TK_FINAL block TK_END final_opt
+	    ;
+
+final_opt:
+	    vacio
+	|   TK_FINAL
+	;
+
+initial_opt:
+	    vacio
+	|   TK_INITIAL
 	;
 
 stmt:
@@ -132,28 +152,119 @@ stmt:
 	|   return_stmt
 	|   reply_stmt
 	|   function_stmt
-	//|   forward_stmt
-	//|   send_stmt
-	//|   explicit_call
+	|   forward_stmt
+	|   send_stmt
+	|   explicit_call
 	|   destroy_stmt
 	|   begin_end
 	|   if_stmt
 	|   do_stmt
-	/*|   for_all_stmt
+	|   for_all_stmt
 	|   v_stmt
 	|   input_stmt
 	|   receive_stmt
 	|   p_stmt
 	|   concurrent_stmt
-	*/
 	;
 
 function_stmt:
         TK_ID TK_LPAREN bound_lp TK_RPAREN
         ;
+
 stop_stmt:
 	    TK_STOP exit_code_opt
 	;
+
+forward_stmt:
+	    TK_FORWARD invocation
+	    ;
+
+send_stmt:
+	    TK_SEND invocation
+	    ;
+
+explicit_call:
+	    TK_CALL invocation
+	    ;
+
+v_stmt:
+	    TK_V TK_LPAREN expr TK_RPAREN
+	    ;
+
+input_stmt:
+	    TK_IN in_cmd_lp else_cmd_opt TK_NI
+	    ;
+
+
+in_cmd_lp:
+	    in_cmd
+	|   in_cmd_lp TK_SQUARE in_cmd
+	;
+
+in_cmd:
+	    quantifiers_opt in_spec sync_expr_opt sched_expr_opt TK_ARROW block
+	;
+
+in_spec:
+	    in_op param_names
+	    ;
+
+in_op:
+	    qualified_id
+	|   qualified_id subscripts
+	;
+
+sched_expr_opt:
+	    vacio
+	|   TK_BY expr
+	;
+sync_expr_opt:
+	    vacio
+	|   TK_AND expr
+	|   TK_SUCHTHAT expr
+	;
+
+receive_stmt:
+	    TK_RECEIVE expr paren_list
+	    ;
+
+p_stmt:
+	    TK_P TK_LPAREN expr TK_RPAREN
+	    ;
+
+concurrent_stmt:
+	    TK_CO concurrent_cmd_lp TK_OC
+	    ;
+
+concurrent_cmd_lp:
+	    concurrent_cmd
+	|   concurrent_cmd_lp TK_PARALLEL concurrent_cmd
+	;
+
+concurrent_cmd:
+	quantifiers_opt separator_opt concurrent_invocation post_processing_opt
+	;
+
+separator_opt:
+	    vacio
+	|   separator_opt TK_SEPARATOR
+	;
+
+concurrent_invocation:
+	    explicit_call
+	|   send_stmt
+	|   expr
+	;
+
+post_processing_opt:
+	    vacio
+	|   TK_ARROW block
+	;
+
+
+invocation:
+	    expr paren_list
+	    ;
 
 exit_code_opt:
 	    vacio
@@ -176,6 +287,9 @@ do_stmt:
 	    TK_DO guarded_cmd_lp else_cmd_opt TK_OD
 	;
 
+for_all_stmt:
+        TK_FA quantifier_lp TK_ARROW block TK_AF
+    ;
 guarded_cmd_lp:
 	    guarded_cmd
 	|   guarded_cmd_lp TK_SQUARE guarded_cmd
@@ -190,12 +304,7 @@ else_cmd_opt:
 	    vacio
 	|   TK_SQUARE TK_ELSE TK_ARROW block
 	;
-/*
-invocation:
-	    expr paren_list
-	    ;
 
-*/
 paren_list:
 	    TK_LPAREN paren_item_ls TK_RPAREN
 	    ;
@@ -271,26 +380,64 @@ type_restriction:
 type:
 	    subscripts unsub_type
 	|   unsub_type
+	|   stmt
 	;
 
 unsub_type:
 	    basic_type
 	|   string_def
 	|   enum_def
-	/*|   pointer_def
+	|   pointer_def
 	|   record_def
 	|   union_def
 	|   capability_def
-	|   qualified_id*/
+	|   qualified_id
+	;
+pointer_def:
+	    TK_PTR type
+	|   TK_PTR TK_ANY
+	;
+
+union_def:
+	    TK_UNION TK_LPAREN field_lp TK_RPAREN
+	;
+
+record_def:
+	    TK_REC TK_LPAREN field_lp TK_RPAREN
+	    ;
+
+capability_def:
+	   TK_CAP cap_for
+	;
+
+cap_for:
+	    qualified_id
+	|   op_prototype
+	|   TK_SEM sem_proto
+	|   TK_VM
+	;
+
+qualified_id:
+	    TK_ID
+	|   TK_ID TK_PERIOD TK_ID
 	;
 
 basic_type:
-	    TK_BOOL
-	|   TK_CHAR
-	|   TK_INT
-	|   TK_FILE
-	|   TK_REAL
-	;
+            TK_BOOL
+        |   TK_CHAR
+        |   TK_INT
+        |   TK_FILE
+        |   TK_REAL
+        ;
+field_lp:
+            field
+        |   field TK_SEPARATOR field_lp
+        |   field TK_SEPARATOR
+        ;
+
+field:
+            var_def_lp
+        ;
 
 param_kind_opt:
 	    vacio
@@ -378,10 +525,10 @@ expr:
 	|   NUM
 	|   CADENA
 	|   literal
-	//|   invocation
+	|   expr paren_list
 	|   constructor expr
 	|   TK_LPAREN constr_item_lp TK_RPAREN
-	//|   binary_expr
+    //|   binary_expr
 	|   prefix_expr
 	////sufix
     |   expr TK_INCR
@@ -424,7 +571,6 @@ expr:
     |   expr TK_AUG_CONCAT	expr
     |   expr TK_AUG_RSHIFT	expr
     |   expr TK_AUG_LSHIFT	expr
-	///
 	|   create_expr
 	;
 
@@ -546,6 +692,7 @@ bound:
         expr
      |  TK_ASTER
      |  vacio
+     | stmt
      ;
 
 op_restriction:
@@ -567,15 +714,24 @@ id_opt:
 block:
 	    block_items
 	;
-
+/*
 block_items:
 	    block_item
 	|   block_items TK_SEPARATOR block_item
-	;
 
+	;
+*/
+
+block_items:
+        block_item block_items_
+        ;
+block_items_:
+        TK_SEPARATOR? block_item block_items_
+    |   vacio
+    ;
 block_item:
-	    vacio
-	|   decl
+	  //  vacio  |
+	   decl
 	|   stmt
 	|   expr
 	|   import_clause
@@ -592,6 +748,7 @@ falta: 'falta implementar'
 
 vacio: ;
 
+TK_PARALLEL: '//';
 TK_PERIOD: '.';
 TK_INCR: '++';
 TK_DECR: '--';
@@ -644,7 +801,16 @@ TK_ADDR: '@';
 TK_QMARK: '?';
 
 //////////////////////////////////////////
+TK_RECEIVE: 'receive';
+TK_P: 'p';
+TK_CO: 'co';
+TK_OC: 'oc';
+TK_V: 'v';
+TK_IN: 'in';
+TK_NI: 'ni';
 TK_OR_: 'or';
+TK_FA: 'fa';
+TK_AF: 'af';
 TK_PROCESS: 'process';
 TK_PROCEDURE: 'procedure';
 TK_BY: 'by';
@@ -705,8 +871,15 @@ TK_CREATE: 'create';
 TK_VM: 'vm';
 TK_ON: 'on';
 TK_STOP: 'stop';
+TK_PTR: 'ptr';
+TK_REC: 'rec';
+TK_UNION: 'union';
+TK_ANY: 'any';
+TK_CAP: 'cap';
+TK_INITIAL: 'initial';
+TK_FINAL: 'final';
 
-TK_ID: [a-zA-Z]+ ;
+TK_ID: [a-zA-Z0-9]+ ;
 CADENA: ('"' .*? '"' | '“' .*? '”' | '\'' .*? '\'');
 NUM:[0-9]+;
 ESP : [ \t\r\n]+ -> skip ;
