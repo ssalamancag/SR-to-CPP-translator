@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d557adf6-bcc5-44c1-8fc8-bdcf556e1c87" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/input/1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/input/2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/input/3.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/input/4.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/input/5.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grammar/MiLenguaje.g4" beforeDir="false" afterPath="$PROJECT_DIR$/grammar/MiLenguaje.g4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/entrada.txt" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/input/6.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +66,7 @@
       <workItem from="1573230000591" duration="14415000" />
       <workItem from="1573306286522" duration="5253000" />
       <workItem from="1573314061517" duration="8404000" />
-      <workItem from="1573500953616" duration="5886000" />
+      <workItem from="1573500953616" duration="6216000" />
     </task>
     <servers />
   </component>
