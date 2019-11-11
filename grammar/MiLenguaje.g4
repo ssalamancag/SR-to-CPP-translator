@@ -1,6 +1,6 @@
 grammar MiLenguaje;
 
-inicio: componet;
+inicio: componet ;
 componet: global
         | resource_specification
         | resource_body
@@ -16,7 +16,7 @@ comp_label:
 
 resource_specification: TK_RESOURCE TK_ID parameters? spec_stmt_ls spec_body end_id?;
 
-resource_body: falta;
+resource_body: spec_body;
 
 proc: TK_PROC TK_ID param_names spec_stmt_ls spec_body end_id
     ;
@@ -76,6 +76,7 @@ spec_stmt:
 	    common_stmt
 	|   extend_clause
 	|   body_stmt
+	|   decl
 	;
 
 spec_body:
@@ -335,7 +336,7 @@ param_spec_ls:
 param_spec_lp:
 	    param_spec
 	|   param_spec TK_SEPARATOR
-	|   param_spec TK_SEPARATOR
+	|   param_spec TK_SEPARATOR param_spec_lp
 	;
 
 param_spec:
@@ -365,16 +366,68 @@ import_list:
 decl:
 	    type_decl
 	|   obj_decl
-	/*|   optype_decl
+	|   optype_decl
 	|   sem_decl
 	|   op_decl
-	*/;
+	;
 
 type_decl: TK_TYPE TK_ID TK_EQ type type_restriction
     	    ;
 type_restriction:
         vacio
 	|   TK_LBRACE TK_ID TK_RBRACE
+	;
+
+op_decl:
+	    op_or_ext oper_def_lp
+	    ;
+
+oper_def_lp:
+	    oper_def
+	|   oper_def_lp TK_COMMA oper_def
+	;
+
+oper_def:
+	    id_subs_lp op_prototype
+	|   id_subs_lp colon_opt qualified_id
+	;
+
+colon_opt:
+	    vacio
+	|   TK_COLON
+	;
+
+
+op_or_ext:
+	    TK_OP
+	|   TK_EXTERNAL
+	;
+
+optype_decl:
+	    TK_OPTYPE TK_ID eq_opt op_prototype
+	    ;
+
+sem_decl:
+	    TK_SEM sem_def_lp
+	    ;
+
+sem_def_lp:
+	    sem_def
+	|   sem_def_lp TK_COMMA sem_def
+	;
+
+sem_def:
+	    id_subs sem_proto sem_init
+	    ;
+
+sem_init:
+	    vacio
+	|   TK_ASSIGN expr
+	;
+
+eq_opt:
+	    vacio
+	|   TK_EQ
 	;
 
 type:
@@ -748,6 +801,7 @@ falta: 'falta implementar'
 
 vacio: ;
 
+TK_EXTERNAL: 'external';
 TK_PARALLEL: '//';
 TK_PERIOD: '.';
 TK_INCR: '++';
@@ -801,6 +855,7 @@ TK_ADDR: '@';
 TK_QMARK: '?';
 
 //////////////////////////////////////////
+TK_OPTYPE: 'optype';
 TK_RECEIVE: 'receive';
 TK_P: 'p';
 TK_CO: 'co';
@@ -879,7 +934,7 @@ TK_CAP: 'cap';
 TK_INITIAL: 'initial';
 TK_FINAL: 'final';
 
-TK_ID: [a-zA-Z0-9]+ ;
+TK_ID: [a-zA-Z][a-zA-Z0-9_]* ;
 CADENA: ('"' .*? '"' | '“' .*? '”' | '\'' .*? '\'');
 NUM:( '-'?[0-9]+ | '-'?[0-9]+( | [.][0-9]+) ) ;
 ESP : [ \t\r\n]+ -> skip ;
