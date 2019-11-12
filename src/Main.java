@@ -11,12 +11,22 @@ public class Main {
                 lexer = new MiLenguajeLexer(CharStreams.fromFileName(args[0]));
             else
                 lexer = new MiLenguajeLexer(CharStreams.fromStream(System.in));
-            // Identificar al analizador léxico como fuente de tokens para el sintactico
+
+            // Crear objeto que realiza el reorrido de tokens
             CommonTokenStream tokens = new CommonTokenStream(lexer);
-            // Crear el objeto correspondiente al analizador sintáctico que se alimenta a partir del buffer de tokens
+
+            // Crear analizador sintáctico (Nombre de la gramatica + Parser)
             MiLenguajeParser parser = new MiLenguajeParser(tokens);
+
+            // Crear objeto que realiza el reorrido de la gramatica desde la regla inicial (parcer. + nombre de la regla inicial de la gramatica + ())
             ParseTree tree = parser.inicio();
-            System.out.println(tree.toStringTree(parser)); // imprime el arbol al estilo LISP
+
+            // Crear objeto que realiza acciones en el recorrido de la gramatica
+            ParseTreeWalker walker = new ParseTreeWalker();
+
+            // Realizar recorrido con las acciones de traducción de la clase en la gramatica dada
+            walker.walk(new TranslateToCpp(), tree);
+
         } catch (Exception e){
             System.err.println("Error (Test): " + e);
         }
