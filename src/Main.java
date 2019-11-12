@@ -4,7 +4,7 @@ import java.io.File;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        try{
+
             // crear un analizador léxico que se alimenta a partir de la entrada (archivo  o consola)
             MiLenguajeLexer lexer;
             /*if (args.length>0)
@@ -30,8 +30,6 @@ public class Main {
             walker.walk(t, tree);
             t.br.close();
 
-        } catch (Exception e){
-            System.err.println("Error (Test): " + e);
-        }
+
     }
 }

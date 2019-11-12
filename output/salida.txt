@@ -1,1 +1,25 @@
-globalsizesvarN:=10varPR:=2varS:intbodysizesgetarg(1,N);getarg(2,PR);S:=N/PRifNmodPR!=0->v("N must be a multiple of PR");stop(1)fiifMmodPR!=0->write("N must be a multiple of PR");stop(1)fiend
+#include <pthread.h>
+
+using namespace std;
+
+class sizes{
+	public:
+		var N = 10;
+var PR = 2;
+var S 
+}
+
+class bodysizes(sizes sizes) {
+	public:
+		1;
+2;
+0;
+1;
+0;
+1;
+
+}
+
+int main() {
+	
+}

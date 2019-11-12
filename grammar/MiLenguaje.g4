@@ -519,9 +519,13 @@ enum_def:
         ;
 
 var_or_const:
-         TK_VAR
-     |   TK_CONST
+         var_or_const_var
+     |   var_or_const_const
     ;
+
+var_or_const_var: TK_VAR;
+
+var_or_const_const: TK_CONST;
 
 var_def_lp:
         var_def
@@ -535,9 +539,11 @@ var_def:
 var_att:
 	    TK_COLON type
 	|   TK_COLON type TK_ASSIGN expr
-	|   TK_ASSIGN expr
+	|   var_att_assign_expr
 	|   TK_SEPARATOR
 	;
+
+var_att_assign_expr: TK_ASSIGN expr;
 
 id_subs_lp:
         id_subs
@@ -545,9 +551,11 @@ id_subs_lp:
       ;
 
 id_subs:
-            TK_ID
+            id_subsID
         |   TK_ID subscripts
         ;
+
+id_subsID : TK_ID;
 
 id_lp:
         TK_ID
@@ -575,7 +583,7 @@ reply_stmt:
 
 expr:
 	    TK_ID
-	|   NUM
+	|   expr_num
 	|   CADENA
 	|   literal
 	|   expr paren_list
@@ -626,6 +634,8 @@ expr:
     |   expr TK_AUG_LSHIFT	expr
 	|   create_expr
 	;
+
+expr_num: NUM;
 
 literal:
 	    TK_ILIT
