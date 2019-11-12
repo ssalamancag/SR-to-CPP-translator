@@ -987,6 +987,16 @@ public interface MiLenguajeListener extends ParseTreeListener {
 	 */
 	void exitBasic_type(MiLenguajeParser.Basic_typeContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#basic_type1}.
+	 * @param ctx the parse tree
+	 */
+	void enterBasic_type1(MiLenguajeParser.Basic_type1Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#basic_type1}.
+	 * @param ctx the parse tree
+	 */
+	void exitBasic_type1(MiLenguajeParser.Basic_type1Context ctx);
+	/**
 	 * Enter a parse tree produced by {@link MiLenguajeParser#field_lp}.
 	 * @param ctx the parse tree
 	 */
@@ -1117,15 +1127,25 @@ public interface MiLenguajeListener extends ParseTreeListener {
 	 */
 	void exitVar_att(MiLenguajeParser.Var_attContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link MiLenguajeParser#var_att_assign_expr}.
+	 * Enter a parse tree produced by {@link MiLenguajeParser#var_att1}.
 	 * @param ctx the parse tree
 	 */
-	void enterVar_att_assign_expr(MiLenguajeParser.Var_att_assign_exprContext ctx);
+	void enterVar_att1(MiLenguajeParser.Var_att1Context ctx);
 	/**
-	 * Exit a parse tree produced by {@link MiLenguajeParser#var_att_assign_expr}.
+	 * Exit a parse tree produced by {@link MiLenguajeParser#var_att1}.
 	 * @param ctx the parse tree
 	 */
-	void exitVar_att_assign_expr(MiLenguajeParser.Var_att_assign_exprContext ctx);
+	void exitVar_att1(MiLenguajeParser.Var_att1Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#var_att2}.
+	 * @param ctx the parse tree
+	 */
+	void enterVar_att2(MiLenguajeParser.Var_att2Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#var_att2}.
+	 * @param ctx the parse tree
+	 */
+	void exitVar_att2(MiLenguajeParser.Var_att2Context ctx);
 	/**
 	 * Enter a parse tree produced by {@link MiLenguajeParser#id_subs_lp}.
 	 * @param ctx the parse tree

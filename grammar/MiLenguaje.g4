@@ -478,10 +478,13 @@ qualified_id:
 basic_type:
             TK_BOOL
         |   TK_CHAR
-        |   TK_INT
+        |   basic_type1
         |   TK_FILE
         |   TK_REAL
         ;
+
+basic_type1 : TK_INT;
+
 field_lp:
             field
         |   field TK_SEPARATOR field_lp
@@ -537,13 +540,14 @@ var_def:
         ;
 
 var_att:
-	    TK_COLON type
+	    var_att2
 	|   TK_COLON type TK_ASSIGN expr
-	|   var_att_assign_expr
+	|   var_att1
 	|   TK_SEPARATOR
 	;
 
-var_att_assign_expr: TK_ASSIGN expr;
+var_att1: TK_ASSIGN expr;
+var_att2: TK_COLON type;
 
 id_subs_lp:
         id_subs

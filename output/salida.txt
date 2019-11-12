@@ -4,20 +4,12 @@ using namespace std;
 
 class sizes{
 	public:
-		var N = 10;
-var PR = 2;
-var S 
+		int N = 10; int PR = 2; int S;
 }
 
-class bodysizes(sizes sizes) {
+class bodynull(null null) {
 	public:
-		1;
-2;
-0;
-1;
-0;
-1;
-
+		
 }
 
 int main() {

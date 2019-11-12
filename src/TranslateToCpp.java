@@ -141,12 +141,28 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
         pointer.peek().append(ctx.TK_ID() + " ");
     }
 
-    @Override public void enterVar_att_assign_expr(MiLenguajeParser.Var_att_assign_exprContext ctx) {
+    @Override public void enterVar_att1(MiLenguajeParser.Var_att1Context ctx) {
         pointer.peek().append("=" + " ");
     }
 
     @Override public void enterExpr_num(MiLenguajeParser.Expr_numContext ctx) {
-        pointer.peek().append(ctx.NUM() + ";");
+        // Reemplazar ultimo var por int
+        int pos = pointer.peek().lastIndexOf("var");
+        pointer.peek().replace(pos, pos + 3, "int");
+        pointer.peek().append(ctx.NUM() + "; ");
+    }
+
+    @Override public void enterVar_att2(MiLenguajeParser.Var_att2Context ctx) {
+        // Reemplazar ultimo var por int
+        int pos = pointer.peek().lastIndexOf(" ");
+        pointer.peek().replace(pos, pos + 1, "");
+        pointer.peek().append(";");
+    }
+
+    @Override public void enterBasic_type1(MiLenguajeParser.Basic_type1Context ctx) {
+        // Reemplazar ultimo var por int
+        int pos = pointer.peek().lastIndexOf("var");
+        pointer.peek().replace(pos, pos + 3, "int");
     }
 
     @Override public void visitTerminal(TerminalNode node) {

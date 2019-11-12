@@ -1191,6 +1191,18 @@ public class MiLenguajeBaseListener implements MiLenguajeListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterBasic_type1(MiLenguajeParser.Basic_type1Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBasic_type1(MiLenguajeParser.Basic_type1Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterField_lp(MiLenguajeParser.Field_lpContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -1347,13 +1359,25 @@ public class MiLenguajeBaseListener implements MiLenguajeListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVar_att_assign_expr(MiLenguajeParser.Var_att_assign_exprContext ctx) { }
+	@Override public void enterVar_att1(MiLenguajeParser.Var_att1Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVar_att_assign_expr(MiLenguajeParser.Var_att_assign_exprContext ctx) { }
+	@Override public void exitVar_att1(MiLenguajeParser.Var_att1Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterVar_att2(MiLenguajeParser.Var_att2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVar_att2(MiLenguajeParser.Var_att2Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

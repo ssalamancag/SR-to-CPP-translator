@@ -598,6 +598,12 @@ public interface MiLenguajeVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitBasic_type(MiLenguajeParser.Basic_typeContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#basic_type1}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBasic_type1(MiLenguajeParser.Basic_type1Context ctx);
+	/**
 	 * Visit a parse tree produced by {@link MiLenguajeParser#field_lp}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -676,11 +682,17 @@ public interface MiLenguajeVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitVar_att(MiLenguajeParser.Var_attContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link MiLenguajeParser#var_att_assign_expr}.
+	 * Visit a parse tree produced by {@link MiLenguajeParser#var_att1}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitVar_att_assign_expr(MiLenguajeParser.Var_att_assign_exprContext ctx);
+	T visitVar_att1(MiLenguajeParser.Var_att1Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#var_att2}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVar_att2(MiLenguajeParser.Var_att2Context ctx);
 	/**
 	 * Visit a parse tree produced by {@link MiLenguajeParser#id_subs_lp}.
 	 * @param ctx the parse tree
