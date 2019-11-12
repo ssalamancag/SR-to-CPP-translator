@@ -1,0 +1,1 @@
+globalsizesvarN:=10varPR:=2varS:intbodysizesgetarg(1,N);getarg(2,PR);S:=N/PRifNmodPR!=0->v("N must be a multiple of PR");stop(1)fiifMmodPR!=0->write("N must be a multiple of PR");stop(1)fiend

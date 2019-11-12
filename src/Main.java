@@ -7,10 +7,11 @@ public class Main {
         try{
             // crear un analizador léxico que se alimenta a partir de la entrada (archivo  o consola)
             MiLenguajeLexer lexer;
-            if (args.length>0)
+            /*if (args.length>0)
                 lexer = new MiLenguajeLexer(CharStreams.fromFileName(args[0]));
             else
-                lexer = new MiLenguajeLexer(CharStreams.fromStream(System.in));
+                lexer = new MiLenguajeLexer(CharStreams.fromStream(System.in));*/
+            lexer = new MiLenguajeLexer(CharStreams.fromFileName("input/2.txt"));
 
             // Crear objeto que realiza el reorrido de tokens
             CommonTokenStream tokens = new CommonTokenStream(lexer);
@@ -25,7 +26,9 @@ public class Main {
             ParseTreeWalker walker = new ParseTreeWalker();
 
             // Realizar recorrido con las acciones de traducción de la clase en la gramatica dada
-            walker.walk(new TranslateToCpp(), tree);
+            TranslateToCpp t = new TranslateToCpp();
+            walker.walk(t, tree);
+            t.br.close();
 
         } catch (Exception e){
             System.err.println("Error (Test): " + e);
