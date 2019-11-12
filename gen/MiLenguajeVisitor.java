@@ -604,6 +604,30 @@ public interface MiLenguajeVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitBasic_type1(MiLenguajeParser.Basic_type1Context ctx);
 	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#basic_type2}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBasic_type2(MiLenguajeParser.Basic_type2Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#basic_type3}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBasic_type3(MiLenguajeParser.Basic_type3Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#basic_type4}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBasic_type4(MiLenguajeParser.Basic_type4Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#basic_type5}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBasic_type5(MiLenguajeParser.Basic_type5Context ctx);
+	/**
 	 * Visit a parse tree produced by {@link MiLenguajeParser#field_lp}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

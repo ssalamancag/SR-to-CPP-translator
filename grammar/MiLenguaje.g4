@@ -476,14 +476,18 @@ qualified_id:
 	;
 
 basic_type:
-            TK_BOOL
-        |   TK_CHAR
-        |   basic_type1
-        |   TK_FILE
-        |   TK_REAL
+            basic_type1
+        |   basic_type2
+        |   basic_type3
+        |   basic_type4
+        |   basic_type5
         ;
 
 basic_type1 : TK_INT;
+basic_type2 : TK_BOOL;
+basic_type3 : TK_CHAR;
+basic_type4 : TK_FILE;
+basic_type5 : TK_REAL;
 
 field_lp:
             field

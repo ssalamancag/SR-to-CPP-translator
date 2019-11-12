@@ -4,5 +4,13 @@ global sizes
    # number of processes, default 2
    var PR := 2
    # strip size
-   var S : int
+   var S : char
+body sizes
+   S := N/PR
+   if N mod PR != 0 ->
+     v("N must be a multiple of PR"); stop (1)
+   fi
+   if M mod PR != 0 ->
+        write("N must be a multiple of PR"); stop (1)
+   fi
 end

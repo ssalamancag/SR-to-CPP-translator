@@ -997,6 +997,46 @@ public interface MiLenguajeListener extends ParseTreeListener {
 	 */
 	void exitBasic_type1(MiLenguajeParser.Basic_type1Context ctx);
 	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#basic_type2}.
+	 * @param ctx the parse tree
+	 */
+	void enterBasic_type2(MiLenguajeParser.Basic_type2Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#basic_type2}.
+	 * @param ctx the parse tree
+	 */
+	void exitBasic_type2(MiLenguajeParser.Basic_type2Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#basic_type3}.
+	 * @param ctx the parse tree
+	 */
+	void enterBasic_type3(MiLenguajeParser.Basic_type3Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#basic_type3}.
+	 * @param ctx the parse tree
+	 */
+	void exitBasic_type3(MiLenguajeParser.Basic_type3Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#basic_type4}.
+	 * @param ctx the parse tree
+	 */
+	void enterBasic_type4(MiLenguajeParser.Basic_type4Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#basic_type4}.
+	 * @param ctx the parse tree
+	 */
+	void exitBasic_type4(MiLenguajeParser.Basic_type4Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#basic_type5}.
+	 * @param ctx the parse tree
+	 */
+	void enterBasic_type5(MiLenguajeParser.Basic_type5Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#basic_type5}.
+	 * @param ctx the parse tree
+	 */
+	void exitBasic_type5(MiLenguajeParser.Basic_type5Context ctx);
+	/**
 	 * Enter a parse tree produced by {@link MiLenguajeParser#field_lp}.
 	 * @param ctx the parse tree
 	 */

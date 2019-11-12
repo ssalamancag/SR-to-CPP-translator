@@ -92,6 +92,14 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
         }
     }
 
+    // Reemplazar ultima coincidencia
+    public void replaceLast(String old, String new1){
+        if (pointer.peek().toString().contains(old)){
+            int pos = pointer.peek().lastIndexOf(old);
+            pointer.peek().replace(pos, pos + old.length(), new1);
+        }
+    }
+
     @Override public void enterInicio(MiLenguajeParser.InicioContext ctx) {
         pointer.peek().append("int main() {\n\t");
 
@@ -146,23 +154,29 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
     }
 
     @Override public void enterExpr_num(MiLenguajeParser.Expr_numContext ctx) {
-        // Reemplazar ultimo var por int
-        int pos = pointer.peek().lastIndexOf("var");
-        pointer.peek().replace(pos, pos + 3, "int");
+        replaceLast("var","int");
         pointer.peek().append(ctx.NUM() + "; ");
     }
 
     @Override public void enterVar_att2(MiLenguajeParser.Var_att2Context ctx) {
-        // Reemplazar ultimo var por int
-        int pos = pointer.peek().lastIndexOf(" ");
-        pointer.peek().replace(pos, pos + 1, "");
+        replaceLast(" ","");
         pointer.peek().append(";");
     }
 
     @Override public void enterBasic_type1(MiLenguajeParser.Basic_type1Context ctx) {
-        // Reemplazar ultimo var por int
-        int pos = pointer.peek().lastIndexOf("var");
-        pointer.peek().replace(pos, pos + 3, "int");
+        replaceLast("var","int");
+    }
+
+    @Override public void enterBasic_type2(MiLenguajeParser.Basic_type2Context ctx) {
+        replaceLast("var","bool");
+    }
+
+    @Override public void enterBasic_type3(MiLenguajeParser.Basic_type3Context ctx) {
+        replaceLast("var","char");
+    }
+
+    @Override public void enterBasic_type5(MiLenguajeParser.Basic_type5Context ctx) {
+        replaceLast("var","float");
     }
 
     @Override public void visitTerminal(TerminalNode node) {
