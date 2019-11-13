@@ -97,6 +97,36 @@ public interface MiLenguajeListener extends ParseTreeListener {
 	 */
 	void exitProcedure(MiLenguajeParser.ProcedureContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#procedure1}.
+	 * @param ctx the parse tree
+	 */
+	void enterProcedure1(MiLenguajeParser.Procedure1Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#procedure1}.
+	 * @param ctx the parse tree
+	 */
+	void exitProcedure1(MiLenguajeParser.Procedure1Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#procedure2}.
+	 * @param ctx the parse tree
+	 */
+	void enterProcedure2(MiLenguajeParser.Procedure2Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#procedure2}.
+	 * @param ctx the parse tree
+	 */
+	void exitProcedure2(MiLenguajeParser.Procedure2Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#procedure3}.
+	 * @param ctx the parse tree
+	 */
+	void enterProcedure3(MiLenguajeParser.Procedure3Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#procedure3}.
+	 * @param ctx the parse tree
+	 */
+	void exitProcedure3(MiLenguajeParser.Procedure3Context ctx);
+	/**
 	 * Enter a parse tree produced by {@link MiLenguajeParser#quantifiers_opt}.
 	 * @param ctx the parse tree
 	 */
@@ -826,6 +856,16 @@ public interface MiLenguajeListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitParam_spec(MiLenguajeParser.Param_specContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#param_spec1}.
+	 * @param ctx the parse tree
+	 */
+	void enterParam_spec1(MiLenguajeParser.Param_spec1Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#param_spec1}.
+	 * @param ctx the parse tree
+	 */
+	void exitParam_spec1(MiLenguajeParser.Param_spec1Context ctx);
 	/**
 	 * Enter a parse tree produced by {@link MiLenguajeParser#common_stmt}.
 	 * @param ctx the parse tree

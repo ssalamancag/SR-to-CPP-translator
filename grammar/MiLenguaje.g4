@@ -28,8 +28,12 @@ process:
 	;
 
 procedure:
-        TK_PROCEDURE TK_ID prototype block end_id
+        procedure1 procedure2 prototype block end_id
     ;
+
+procedure1 : TK_PROCEDURE;
+procedure2 : TK_ID;
+procedure3 : end_id;
 
 quantifiers_opt:
 	    vacio
@@ -359,8 +363,10 @@ param_spec_lp:
 
 param_spec:
 	    param_kind_opt type
-	|   param_kind_opt id_subs_lp TK_COLON type
+	|   param_kind_opt id_subs_lp param_spec1 type
 	;
+
+param_spec1 : TK_COLON;
 
 common_stmt:
     // vacio |  NO QUITAR ESTE COMENTARIO

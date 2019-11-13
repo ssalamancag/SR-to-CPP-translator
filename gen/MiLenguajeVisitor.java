@@ -64,6 +64,24 @@ public interface MiLenguajeVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitProcedure(MiLenguajeParser.ProcedureContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#procedure1}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitProcedure1(MiLenguajeParser.Procedure1Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#procedure2}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitProcedure2(MiLenguajeParser.Procedure2Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#procedure3}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitProcedure3(MiLenguajeParser.Procedure3Context ctx);
+	/**
 	 * Visit a parse tree produced by {@link MiLenguajeParser#quantifiers_opt}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -501,6 +519,12 @@ public interface MiLenguajeVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitParam_spec(MiLenguajeParser.Param_specContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#param_spec1}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitParam_spec1(MiLenguajeParser.Param_spec1Context ctx);
 	/**
 	 * Visit a parse tree produced by {@link MiLenguajeParser#common_stmt}.
 	 * @param ctx the parse tree
