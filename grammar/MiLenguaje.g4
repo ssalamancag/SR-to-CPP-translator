@@ -91,9 +91,11 @@ spec_stmt:
 	;
 
 spec_body:
-        vacio
-	|   TK_BODY TK_ID maybe_params spec_body_comp
+        TK_END componet
+	|   spec_body1
 	;
+
+spec_body1 : TK_BODY TK_ID maybe_params spec_body_comp;
 
 spec_body_comp:
         body_stmt_ls end_id
@@ -180,8 +182,12 @@ stmt:
 	;
 
 function_stmt:
-        TK_ID TK_LPAREN bound_lp TK_RPAREN
+        function_stmt1 function_stmt2 bound_lp function_stmt3
         ;
+
+function_stmt1 : TK_ID;
+function_stmt2 : TK_LPAREN;
+function_stmt3 : TK_RPAREN;
 
 stop_stmt:
 	    TK_STOP exit_code_opt
@@ -292,8 +298,11 @@ begin_end:
 	    ;
 
 if_stmt:
-	    TK_IF guarded_cmd_lp else_cmd_opt TK_FI
+	    if_stmt1 guarded_cmd_lp else_cmd_opt if_stmt2
 	    ;
+
+if_stmt1 : TK_IF;
+if_stmt2 : TK_FI;
 
 do_stmt:
 	    do_stmt1 guarded_cmd_lp else_cmd_opt do_stmt2
@@ -312,8 +321,10 @@ for_all_stmt3: TK_AF;
 
 guarded_cmd_lp:
 	    guarded_cmd
-	|   guarded_cmd_lp TK_SQUARE guarded_cmd
+	|   guarded_cmd_lp guarded_cmd_lp1 guarded_cmd
 	;
+
+guarded_cmd_lp1: TK_SQUARE;
 
 guarded_cmd:
 	        expr TK_OR_ block
@@ -329,8 +340,11 @@ else_cmd_opt:
 	;
 
 paren_list:
-	    TK_LPAREN paren_item_ls TK_RPAREN
+	    paren_list1 paren_item_ls paren_list2
 	    ;
+
+paren_list1 : TK_LPAREN;
+paren_list2 : TK_RPAREN;
 
 paren_item_ls:
 	    vacio

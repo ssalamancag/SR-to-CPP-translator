@@ -38,7 +38,7 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
 
             // Instanciar estructura C++
             imports = new ArrayList<>();
-            imports.add(new StringBuilder("#include <pthread.h>"));
+            imports.add(new StringBuilder("#include <iostream>"));
             namespace = new StringBuilder("using namespace std;");
             globals = new ArrayList<StringBuilder>();
             speficications = new ArrayList<StringBuilder>();
@@ -135,6 +135,16 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
         return cadena;
     }
 
+    public void dropLastLine() {
+        int i = 0;
+        String cadena = pointer.peek().toString();
+        int pos = cadena.lastIndexOf("\n");
+        cadena = cadena.substring(0, pos);
+        pos = cadena.lastIndexOf("\n") + 1;
+        cadena += space();
+        pointer.peek().replace(0, pointer.peek().length(), cadena);
+    }
+
     @Override public void enterInicio(MiLenguajeParser.InicioContext ctx) {
         pointer.peek().append("int main() {\n\t");
 
@@ -154,7 +164,7 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
     }
 
     @Override public void exitGlobal(MiLenguajeParser.GlobalContext ctx) {
-        pointer.peek().append("\n" + lessSpace() + "}\n}\n");
+        pointer.peek().append("\n" + lessSpace() + "}\n};\n");
         pointer.pop();
     }
 
@@ -166,18 +176,18 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
     }
 
     @Override public void exitResource_specification(MiLenguajeParser.Resource_specificationContext ctx) {
-        pointer.peek().append("\n" + lessSpace() + "}\n}\n");
+        pointer.peek().append("\n" + lessSpace() + "};\n}\n");
         pointer.pop();
     }
 
-    @Override public void enterSpec_body(MiLenguajeParser.Spec_bodyContext ctx) {
+    @Override public void enterSpec_body1(MiLenguajeParser.Spec_body1Context ctx) {
         bodies.add(new StringBuilder("class body" + ctx.TK_ID() + " {\n\tpublic:\n\t\tbody" + ctx.TK_ID() + "(" + ctx.TK_ID() + " " + ctx.TK_ID() + ") {\n\t\t\t"));
         pointer.add(bodies.get(bodies.size()-1));
         main.append("body" + ctx.TK_ID() + "(" + lastID + ");\n\t");
     }
 
-    @Override public void exitSpec_body(MiLenguajeParser.Spec_bodyContext ctx) {
-        pointer.peek().append("\n" + lessSpace() + "}\n}\n");
+    @Override public void exitSpec_body1(MiLenguajeParser.Spec_body1Context ctx) {
+        pointer.peek().append("\n" + lessSpace() + "}\n};\n");
         pointer.pop();
     }
 
@@ -190,7 +200,9 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
     }
 
     @Override public void enterId_subsID(MiLenguajeParser.Id_subsIDContext ctx) {
-        pointer.peek().append(ctx.TK_ID() + " ");
+        if (!last.equals("end") && !last.equals("returns")) {
+            pointer.peek().append(ctx.TK_ID() + " ");
+        }
     }
 
     @Override public void enterVar_att1(MiLenguajeParser.Var_att1Context ctx) {
@@ -222,7 +234,9 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
     }
 
     @Override public void enterExpr1(MiLenguajeParser.Expr1Context ctx) {
-        pointer.peek().append(ctx.TK_ID() + " ");
+        if (!last.equals("end") && !last.equals("returns")) {
+            pointer.peek().append(ctx.TK_ID() + " ");
+        }
     }
 
     @Override public void enterExpr2(MiLenguajeParser.Expr2Context ctx) {
@@ -394,11 +408,13 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
     }
 
     @Override public void exitSpec_stmt_ls(MiLenguajeParser.Spec_stmt_lsContext ctx) {
-        pointer.peek().append(";\n" + space());
+        if (!lastLine().trim().equals("") && !last.equals("}")) {
+            pointer.peek().append(";\n" + space());
+        }
     }
 
     @Override public void exitBody_stmt_ls(MiLenguajeParser.Body_stmt_lsContext ctx) {
-        if (!lastLine().trim().equals("")) {
+        if (!lastLine().trim().equals("") && !last.equals("}")) {
             pointer.peek().append(";\n" + space());
         }
     }
@@ -462,7 +478,7 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
     }
 
     @Override public void exitProcedure(MiLenguajeParser.ProcedureContext ctx) {
-        pointer.peek().append("\n" + lessSpace() + "}\n");
+        pointer.peek().append("\n" + "}\n");
         pointer.pop();
     }
 
@@ -474,8 +490,46 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
         pointer.peek().append("ñ ");
     }
 
+    @Override public void enterIf_stmt1(MiLenguajeParser.If_stmt1Context ctx) {
+        pointer.peek().append("if" + " ( ");
+    }
+
+    @Override public void enterGuarded_cmd_lp1(MiLenguajeParser.Guarded_cmd_lp1Context ctx) {
+        pointer.peek().append("\n " + lessSpace() + "} else if" + " ( ");
+    }
+
+    @Override public void enterIf_stmt2(MiLenguajeParser.If_stmt2Context ctx) {
+        pointer.peek().append("\n" + lessSpace() + "}\n " + lessSpace());
+    }
+
+    @Override public void enterFunction_stmt2(MiLenguajeParser.Function_stmt2Context ctx) {
+        pointer.peek().append(ctx.TK_LPAREN() + " ");
+    }
+
+    @Override public void enterFunction_stmt3(MiLenguajeParser.Function_stmt3Context ctx) {
+        pointer.peek().append(ctx.TK_RPAREN() + " ");
+    }
+
+    @Override public void enterParen_list1(MiLenguajeParser.Paren_list1Context ctx) {
+        pointer.peek().append(ctx.TK_LPAREN() + " ");
+    }
+
+    @Override public void enterParen_list2(MiLenguajeParser.Paren_list2Context ctx) {
+        pointer.peek().append(ctx.TK_RPAREN() + " ");
+    }
+
+    @Override public void enterFunction_stmt1(MiLenguajeParser.Function_stmt1Context ctx) {
+        pointer.peek().append(ctx.TK_ID() + " ");
+    }
+
+    @Override public void exitFunction_stmt(MiLenguajeParser.Function_stmtContext ctx) {
+        pointer.peek().append(";\n" + space());
+    }
+
+    String last = "";
     @Override public void visitTerminal(TerminalNode node) {
 
+        last = node.getSymbol().getText();
         /*switch (node.getSymbol().getType()) {
             case MiLenguajeParser.TK_INT:
                 pointer.peek().append(node.getSymbol().getText() + " ");
