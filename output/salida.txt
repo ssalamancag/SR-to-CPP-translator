@@ -2,13 +2,13 @@
 
 using namespace std;
 
-class sizes{
+class factorial{
 	public:
 		int N = 10 ;
 		
 }
 
-class bodysizes(sizes sizes) {
+class bodynull() {
 	public:
 		S = N / PR ;
 		c ++ ;
