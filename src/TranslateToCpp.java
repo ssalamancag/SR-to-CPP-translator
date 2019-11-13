@@ -151,7 +151,7 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
     }
 
     @Override public void enterSpec_body(MiLenguajeParser.Spec_bodyContext ctx) {
-        bodies.add(new StringBuilder("class body" + ctx.TK_ID() + "(" + ctx.TK_ID() +" " + ctx.TK_ID() + ") {\n\tpublic:\n\t\t"));
+        bodies.add(new StringBuilder("class body" + ctx.TK_ID() + "(" + ") {\n\tpublic:\n\t\t"));
         pointer.add(bodies.get(bodies.size()-1));
     }
 
@@ -414,6 +414,34 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
 
     @Override public void exitParameters(MiLenguajeParser.ParametersContext ctx){
         pointer.peek().append(ctx.TK_RPAREN());
+    }
+
+    @Override public void enterIf_stmt(MiLenguajeParser.If_stmtContext ctx){
+        pointer.peek().append(ctx.TK_IF() + "(" );
+    }
+
+    @Override public void exitIf_stmt(MiLenguajeParser.If_stmtContext ctx){
+        pointer.peek().append("}");
+    }
+
+    @Override public void enterV_stmt(MiLenguajeParser.V_stmtContext ctx){
+        pointer.peek().append(ctx.TK_V() + "(" );
+    }
+
+    @Override public void exitV_stmt(MiLenguajeParser.V_stmtContext ctx){
+        pointer.peek().append(")" );
+    }
+
+    @Override public void enterFunction_stmt(MiLenguajeParser.Function_stmtContext ctx){
+        pointer.peek().append(ctx.TK_ID() + "(" );
+    }
+
+    @Override public void exitFunction_stmt(MiLenguajeParser.Function_stmtContext ctx){
+        pointer.peek().append(")");
+    }
+
+    @Override public void enterGuarded_cmd1(MiLenguajeParser.Guarded_cmd1Context ctx){
+        pointer.peek().append("){");
     }
 
     @Override public void visitTerminal(TerminalNode node) {
