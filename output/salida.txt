@@ -15,8 +15,8 @@ class bodysizes(sizes sizes) {
 		getarg 1 N ;
 		getarg 2 PR ;
 		S = N / PR ;
-		N mod PR != 0 "N must be a multiple of PR" ( 1 ) ;
-		M mod PR != 0 "N must be a multiple of PR" ( 1 ) ;
+		if(N mod PR != 0 ){v("N must be a multiple of PR" )( 1 ) };
+		if(M mod PR != 0 ){write("N must be a multiple of PR" )( 1 ) };
 		
 }
 
