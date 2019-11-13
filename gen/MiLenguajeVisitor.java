@@ -82,11 +82,41 @@ public interface MiLenguajeVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitQuantifier(MiLenguajeParser.QuantifierContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#quantifier1}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitQuantifier1(MiLenguajeParser.Quantifier1Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#quantifier2}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitQuantifier2(MiLenguajeParser.Quantifier2Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#quantifier3}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitQuantifier3(MiLenguajeParser.Quantifier3Context ctx);
+	/**
 	 * Visit a parse tree produced by {@link MiLenguajeParser#direction}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitDirection(MiLenguajeParser.DirectionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#direction1}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDirection1(MiLenguajeParser.Direction1Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#direction2}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDirection2(MiLenguajeParser.Direction2Context ctx);
 	/**
 	 * Visit a parse tree produced by {@link MiLenguajeParser#step_opt}.
 	 * @param ctx the parse tree
@@ -369,6 +399,24 @@ public interface MiLenguajeVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitFor_all_stmt(MiLenguajeParser.For_all_stmtContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#for_all_stmt1}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFor_all_stmt1(MiLenguajeParser.For_all_stmt1Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#for_all_stmt2}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFor_all_stmt2(MiLenguajeParser.For_all_stmt2Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#for_all_stmt3}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFor_all_stmt3(MiLenguajeParser.For_all_stmt3Context ctx);
 	/**
 	 * Visit a parse tree produced by {@link MiLenguajeParser#guarded_cmd_lp}.
 	 * @param ctx the parse tree

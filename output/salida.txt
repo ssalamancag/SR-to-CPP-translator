@@ -4,16 +4,20 @@ using namespace std;
 
 class sizes{
 	public:
-		int N =10;
-		int PR =2;
-		char S;
+		int N = 10 ;
+		int PR = 2 ;
+		bool S ;
 		
 }
 
 class bodysizes(sizes sizes) {
 	public:
-		S = N / PR;
-		
+		S = N / PR ;
+		for ( int i = 1 ; i <= n ; i++ ) {
+			i "el factorial es " fact i 
+		}
+;
+
 }
 
 int main() {

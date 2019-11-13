@@ -42,13 +42,20 @@ quantifier_lp:
 	;
 
 quantifier:
-	    TK_ID TK_ASSIGN expr direction expr step_opt such_that_opt
+	    quantifier1 quantifier2 expr direction quantifier3 step_opt such_that_opt
 	;
 
+quantifier1: TK_ID;
+quantifier2: TK_ASSIGN;
+quantifier3: expr;
+
 direction:
-	    TK_TO
-	|   TK_DOWNTO
+	    direction1
+	|   direction2
 	;
+
+direction1: TK_TO;
+direction2: TK_DOWNTO;
 
 step_opt:
 	    vacio
@@ -289,8 +296,13 @@ do_stmt:
 	;
 
 for_all_stmt:
-        TK_FA quantifier_lp TK_ARROW block TK_AF
+        for_all_stmt1 quantifier_lp for_all_stmt2 block for_all_stmt3
     ;
+
+for_all_stmt1 : TK_FA;
+for_all_stmt2 : TK_ARROW;
+for_all_stmt3: TK_AF;
+
 guarded_cmd_lp:
 	    guarded_cmd
 	|   guarded_cmd_lp TK_SQUARE guarded_cmd

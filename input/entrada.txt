@@ -4,13 +4,10 @@ global sizes
    # number of processes, default 2
    var PR := 2
    # strip size
-   var S : char
+   var S : bool
 body sizes
    S := N/PR
-   #if N mod PR != 0 ->
-   #  v("N must be a multiple of PR"); stop (1)
-   #fi
-   #if M mod PR != 0 ->
-   #     write("N must be a multiple of PR"); stop (1)
-   #fi
+   fa i := 1 to n ->
+      write(i, "el factorial es ", fact(i))
+   af
 end
