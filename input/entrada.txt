@@ -17,4 +17,10 @@ body sizes
    		a++
    		e++
    	od
+    procedure fact(k: int) returns f: int
+      fa i := 1 to n ->
+            s = 4 + 7 - 4
+         af
+    end fact
 end
+

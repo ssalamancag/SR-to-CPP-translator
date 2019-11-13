@@ -286,6 +286,9 @@ resource_body
 proc
 process
 procedure
+procedure1
+procedure2
+procedure3
 quantifiers_opt
 quantifier_lp
 quantifier
@@ -360,6 +363,7 @@ parameters
 param_spec_ls
 param_spec_lp
 param_spec
+param_spec1
 common_stmt
 extend_clause
 import_clause

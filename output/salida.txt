@@ -2,13 +2,15 @@
 
 using namespace std;
 
-class sizes{
+class sizes {
 	public:
-		int N = 10 ;
-		
+		sizes() {
+			int N = 10 ;
+			
+		}
 }
 
-class bodysizes(sizes sizes) {
+class bodysizes {
 	public:
 		S = N / PR ;
 		c ++ ;
@@ -23,13 +25,32 @@ class bodysizes(sizes sizes) {
 				b ++ ;
 				cout <<"N must be a multiple of PR" ;
 			}
-			a ++ ;
-			e ++ ;
+			while ( a != 10 ) {
+				b = a ;
+				while ( b != 10 ) {
+					c ++ ;
+					b ++ ;
+					
+				}
+				a ++ ;
+				e ++ ;
+				
+			}
+			fact ;
 			
 		}
+}
+
+int function fact (int k ) {
+	f for ( int i = 1 ; i <= n ; i++ ) {
+		s = 4 + 7 - 4 ;
 		
+	}
+	
 }
 
 int main() {
+	sizes();
+	bodysizes(sizes);
 	
 }
