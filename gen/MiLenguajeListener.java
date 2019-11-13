@@ -647,6 +647,26 @@ public interface MiLenguajeListener extends ParseTreeListener {
 	 */
 	void exitDo_stmt(MiLenguajeParser.Do_stmtContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#do_stmt1}.
+	 * @param ctx the parse tree
+	 */
+	void enterDo_stmt1(MiLenguajeParser.Do_stmt1Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#do_stmt1}.
+	 * @param ctx the parse tree
+	 */
+	void exitDo_stmt1(MiLenguajeParser.Do_stmt1Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#do_stmt2}.
+	 * @param ctx the parse tree
+	 */
+	void enterDo_stmt2(MiLenguajeParser.Do_stmt2Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#do_stmt2}.
+	 * @param ctx the parse tree
+	 */
+	void exitDo_stmt2(MiLenguajeParser.Do_stmt2Context ctx);
+	/**
 	 * Enter a parse tree produced by {@link MiLenguajeParser#for_all_stmt}.
 	 * @param ctx the parse tree
 	 */
@@ -2106,6 +2126,16 @@ public interface MiLenguajeListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitBlock_item(MiLenguajeParser.Block_itemContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#block_item1}.
+	 * @param ctx the parse tree
+	 */
+	void enterBlock_item1(MiLenguajeParser.Block_item1Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#block_item1}.
+	 * @param ctx the parse tree
+	 */
+	void exitBlock_item1(MiLenguajeParser.Block_item1Context ctx);
 	/**
 	 * Enter a parse tree produced by {@link MiLenguajeParser#id_ls}.
 	 * @param ctx the parse tree

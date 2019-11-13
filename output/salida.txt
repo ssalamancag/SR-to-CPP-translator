@@ -5,19 +5,29 @@ using namespace std;
 class sizes{
 	public:
 		int N = 10 ;
-		int PR = 2 ;
-		bool S ;
 		
 }
 
 class bodysizes(sizes sizes) {
 	public:
 		S = N / PR ;
+		c ++ ;
 		for ( int i = 1 ; i <= n ; i++ ) {
-			i "el factorial es " fact i 
+			s = 4 + 7 - 4 ;
+			
 		}
-;
-
+		while ( a != 10 ) {
+			b = a ;
+			while ( b != 10 ) {
+				c ++ ;
+				b ++ ;
+				
+			}
+			a ++ ;
+			e ++ ;
+			
+		}
+		
 }
 
 int main() {

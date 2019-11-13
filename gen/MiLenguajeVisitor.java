@@ -394,6 +394,18 @@ public interface MiLenguajeVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDo_stmt(MiLenguajeParser.Do_stmtContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#do_stmt1}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDo_stmt1(MiLenguajeParser.Do_stmt1Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#do_stmt2}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDo_stmt2(MiLenguajeParser.Do_stmt2Context ctx);
+	/**
 	 * Visit a parse tree produced by {@link MiLenguajeParser#for_all_stmt}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -1269,6 +1281,12 @@ public interface MiLenguajeVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitBlock_item(MiLenguajeParser.Block_itemContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#block_item1}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBlock_item1(MiLenguajeParser.Block_item1Context ctx);
 	/**
 	 * Visit a parse tree produced by {@link MiLenguajeParser#id_ls}.
 	 * @param ctx the parse tree

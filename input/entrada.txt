@@ -1,13 +1,19 @@
 global sizes
    # matrix dimension, default 10
    var N := 10
-   # number of processes, default 2
-   var PR := 2
-   # strip size
-   var S : bool
 body sizes
    S := N/PR
+   c++
    fa i := 1 to n ->
-      write(i, "el factorial es ", fact(i))
+      s = 4 + 7 - 4
    af
+   do a != 10 ->
+   		b := a
+   		do b != 10 ->
+   			c++
+   			b++
+   		od
+   		a++
+   		e++
+   	od
 end

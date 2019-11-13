@@ -115,11 +115,24 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
                 return cadena.substring(0, i);
             }
         }
-        return "";
+        return cadena;
     }
 
     public String lessSpace() {
-        return space().substring(0, space().length() - 1);
+        if (space().length() > 0) {
+            return space().substring(0, space().length() - 1);
+        }
+        return "";
+    }
+
+    public String lastLine() {
+        int i = 0;
+        String cadena = pointer.peek().toString();
+        if (pointer.peek().toString().contains("\n")){
+            int pos = pointer.peek().lastIndexOf("\n");
+            cadena = cadena.substring(pos + 1);
+        }
+        return cadena;
     }
 
     @Override public void enterInicio(MiLenguajeParser.InicioContext ctx) {
@@ -376,7 +389,9 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
     }
 
     @Override public void exitBody_stmt_ls(MiLenguajeParser.Body_stmt_lsContext ctx) {
-        pointer.peek().append(";\n" + space());
+        if (!lastLine().trim().equals("")) {
+            pointer.peek().append(";\n" + space());
+        }
     }
 
     @Override public void enterFor_all_stmt1(MiLenguajeParser.For_all_stmt1Context ctx) {
@@ -388,7 +403,7 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
     }
 
     @Override public void enterFor_all_stmt3(MiLenguajeParser.For_all_stmt3Context ctx) {
-        pointer.peek().append("\n" + lessSpace() + "}" + "\n");
+        pointer.peek().append("\n" + lessSpace() + "}" + "\n" + lessSpace());
     }
 
     @Override public void enterQuantifier1(MiLenguajeParser.Quantifier1Context ctx) {
@@ -414,6 +429,22 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
 
     @Override public void exitParameters(MiLenguajeParser.ParametersContext ctx){
         pointer.peek().append(ctx.TK_RPAREN());
+    }
+
+    @Override public void enterDo_stmt1(MiLenguajeParser.Do_stmt1Context ctx) {
+        pointer.peek().append("while" + " ( ");
+    }
+
+    @Override public void enterDo_stmt2(MiLenguajeParser.Do_stmt2Context ctx) {
+        pointer.peek().append("\n" + lessSpace() + "}" + "\n" + lessSpace());
+    }
+
+    @Override public void enterGuarded_cmd1(MiLenguajeParser.Guarded_cmd1Context ctx) {
+        pointer.peek().append(") {\n" + space() + "\t");
+    }
+
+    @Override public void exitBlock_item1(MiLenguajeParser.Block_item1Context ctx) {
+        pointer.peek().append(";\n" + space());
     }
 
     @Override public void visitTerminal(TerminalNode node) {
