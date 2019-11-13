@@ -2,13 +2,13 @@
 
 using namespace std;
 
-class factorial{
+class sizes{
 	public:
 		int N = 10 ;
 		
 }
 
-class bodynull() {
+class bodysizes(sizes sizes) {
 	public:
 		S = N / PR ;
 		c ++ ;
@@ -21,7 +21,7 @@ class bodynull() {
 			while ( b != 10 ) {
 				c ++ ;
 				b ++ ;
-				
+				cout <<"N must be a multiple of PR" ;
 			}
 			a ++ ;
 			e ++ ;

@@ -12,6 +12,7 @@ body sizes
    		do b != 10 ->
    			c++
    			b++
+   			v("N must be a multiple of PR")
    		od
    		a++
    		e++
