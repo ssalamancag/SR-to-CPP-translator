@@ -590,60 +590,104 @@ reply_stmt:
 	    ;
 
 expr:
-	    TK_ID
+	    expr1
 	|   expr_num
-	|   CADENA
+	|   expr2
 	|   literal
 	|   expr paren_list
 	|   constructor expr
-	|   TK_LPAREN constr_item_lp TK_RPAREN
+	|   expr3 constr_item_lp expr4
     //|   binary_expr
 	|   prefix_expr
 	////sufix
-    |   expr TK_INCR
-    |   expr TK_DECR
-    |   expr TK_HAT
-    |   expr TK_PERIOD TK_ID
-    |   expr TK_LBRACKET bound_lp TK_RBRACKET
+    |   expr expr5
+    |   expr expr6
+    |   expr expr7
+    |   expr expr8 expr1
+    |   expr expr9 bound_lp expr10
 	// binary
-    |   expr TK_EXPON	expr
-    |   expr TK_ASTER	expr
-    |   expr TK_ASTER	expr    constructor
-    |   expr TK_DIV		expr
-    |   expr TK_MOD		expr
-    |   expr TK_REMDR	expr
-    |   expr TK_PLUS	expr
-    |   expr TK_MINUS	expr
-    |   expr TK_CONCAT	expr
-    |   expr TK_EQ		expr
-    |   expr TK_NE		expr
-    |   expr TK_GE		expr
-    |   expr TK_LE		expr
-    |   expr TK_GT		expr
-    |   expr TK_LT		expr
-    |   expr TK_AND		expr
-    |   expr TK_OR		expr
-    |   expr TK_OR_		expr
-    |   expr TK_XOR		expr
-    |   expr TK_RSHIFT	expr
-    |   expr TK_LSHIFT	expr
-    |   expr TK_SWAP	expr
-    |   expr TK_ASSIGN	expr
-    |   expr TK_AUG_PLUS	expr
-    |   expr TK_AUG_MINUS	expr
-    |   expr TK_AUG_ASTER	expr
-    |   expr TK_AUG_DIV	expr
-    |   expr TK_AUG_REMDR	expr
-    |   expr TK_AUG_EXPON	expr
-    |   expr TK_AUG_OR	expr
-    |   expr TK_AUG_AND	expr
-    |   expr TK_AUG_CONCAT	expr
-    |   expr TK_AUG_RSHIFT	expr
-    |   expr TK_AUG_LSHIFT	expr
+    |   expr expr11	expr
+    |   expr expr12	expr
+    |   expr expr12	expr constructor
+    |   expr expr13	expr
+    |   expr expr14	expr
+    |   expr expr15	expr
+    |   expr expr16	expr
+    |   expr expr17	expr
+    |   expr expr18	expr
+    |   expr expr19	expr
+    |   expr expr20	expr
+    |   expr expr21	expr
+    |   expr expr22	expr
+    |   expr expr23	expr
+    |   expr expr24	expr
+    |   expr expr25	expr
+    |   expr expr26	expr
+    |   expr expr27	expr
+    |   expr expr28	expr
+    |   expr expr29	expr
+    |   expr expr30	expr
+    |   expr expr31	expr
+    |   expr expr32	expr
+    |   expr expr33	expr
+    |   expr expr34	expr
+    |   expr expr35	expr
+    |   expr expr36	expr
+    |   expr expr37	expr
+    |   expr expr38	expr
+    |   expr expr39	expr
+    |   expr expr40	expr
+    |   expr expr41	expr
+    |   expr expr42	expr
+    |   expr expr43	expr
 	|   create_expr
 	;
 
 expr_num: NUM;
+
+expr1: TK_ID;
+expr2: CADENA;
+expr3: TK_LPAREN;
+expr4: TK_RPAREN;
+expr5: TK_INCR;
+expr6: TK_DECR;
+expr7: TK_HAT;
+expr8: TK_PERIOD;
+expr9: TK_LBRACKET;
+expr10: TK_RBRACKET;
+expr11: TK_EXPON;
+expr12: TK_ASTER;
+expr13: TK_DIV;
+expr14: TK_MOD;
+expr15: TK_REMDR;
+expr16: TK_PLUS;
+expr17: TK_MINUS;
+expr18: TK_CONCAT;
+expr19: TK_EQ;
+expr20: TK_NE;
+expr21: TK_GE;
+expr22: TK_LE;
+expr23: TK_GT;
+expr24: TK_LT;
+expr25: TK_AND;
+expr26: TK_OR;
+expr27: TK_OR_;
+expr28: TK_XOR;
+expr29: TK_RSHIFT;
+expr30: TK_LSHIFT;
+expr31: TK_SWAP;
+expr32: TK_ASSIGN;
+expr33: TK_AUG_PLUS;
+expr34: TK_AUG_MINUS;
+expr35: TK_AUG_ASTER;
+expr36: TK_AUG_DIV;
+expr37: TK_AUG_REMDR;
+expr38: TK_AUG_EXPON;
+expr39: TK_AUG_OR;
+expr40: TK_AUG_AND;
+expr41: TK_AUG_CONCAT;
+expr42: TK_AUG_RSHIFT;
+expr43: TK_AUG_LSHIFT;
 
 literal:
 	    TK_ILIT

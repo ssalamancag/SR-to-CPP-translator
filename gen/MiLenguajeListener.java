@@ -1297,6 +1297,436 @@ public interface MiLenguajeListener extends ParseTreeListener {
 	 */
 	void exitExpr_num(MiLenguajeParser.Expr_numContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr1}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr1(MiLenguajeParser.Expr1Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr1}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr1(MiLenguajeParser.Expr1Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr2}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr2(MiLenguajeParser.Expr2Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr2}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr2(MiLenguajeParser.Expr2Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr3}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr3(MiLenguajeParser.Expr3Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr3}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr3(MiLenguajeParser.Expr3Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr4}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr4(MiLenguajeParser.Expr4Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr4}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr4(MiLenguajeParser.Expr4Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr5}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr5(MiLenguajeParser.Expr5Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr5}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr5(MiLenguajeParser.Expr5Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr6}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr6(MiLenguajeParser.Expr6Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr6}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr6(MiLenguajeParser.Expr6Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr7}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr7(MiLenguajeParser.Expr7Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr7}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr7(MiLenguajeParser.Expr7Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr8}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr8(MiLenguajeParser.Expr8Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr8}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr8(MiLenguajeParser.Expr8Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr9}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr9(MiLenguajeParser.Expr9Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr9}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr9(MiLenguajeParser.Expr9Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr10}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr10(MiLenguajeParser.Expr10Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr10}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr10(MiLenguajeParser.Expr10Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr11}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr11(MiLenguajeParser.Expr11Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr11}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr11(MiLenguajeParser.Expr11Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr12}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr12(MiLenguajeParser.Expr12Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr12}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr12(MiLenguajeParser.Expr12Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr13}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr13(MiLenguajeParser.Expr13Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr13}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr13(MiLenguajeParser.Expr13Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr14}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr14(MiLenguajeParser.Expr14Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr14}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr14(MiLenguajeParser.Expr14Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr15}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr15(MiLenguajeParser.Expr15Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr15}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr15(MiLenguajeParser.Expr15Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr16}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr16(MiLenguajeParser.Expr16Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr16}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr16(MiLenguajeParser.Expr16Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr17}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr17(MiLenguajeParser.Expr17Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr17}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr17(MiLenguajeParser.Expr17Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr18}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr18(MiLenguajeParser.Expr18Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr18}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr18(MiLenguajeParser.Expr18Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr19}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr19(MiLenguajeParser.Expr19Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr19}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr19(MiLenguajeParser.Expr19Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr20}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr20(MiLenguajeParser.Expr20Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr20}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr20(MiLenguajeParser.Expr20Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr21}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr21(MiLenguajeParser.Expr21Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr21}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr21(MiLenguajeParser.Expr21Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr22}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr22(MiLenguajeParser.Expr22Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr22}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr22(MiLenguajeParser.Expr22Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr23}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr23(MiLenguajeParser.Expr23Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr23}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr23(MiLenguajeParser.Expr23Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr24}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr24(MiLenguajeParser.Expr24Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr24}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr24(MiLenguajeParser.Expr24Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr25}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr25(MiLenguajeParser.Expr25Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr25}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr25(MiLenguajeParser.Expr25Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr26}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr26(MiLenguajeParser.Expr26Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr26}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr26(MiLenguajeParser.Expr26Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr27}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr27(MiLenguajeParser.Expr27Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr27}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr27(MiLenguajeParser.Expr27Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr28}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr28(MiLenguajeParser.Expr28Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr28}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr28(MiLenguajeParser.Expr28Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr29}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr29(MiLenguajeParser.Expr29Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr29}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr29(MiLenguajeParser.Expr29Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr30}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr30(MiLenguajeParser.Expr30Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr30}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr30(MiLenguajeParser.Expr30Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr31}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr31(MiLenguajeParser.Expr31Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr31}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr31(MiLenguajeParser.Expr31Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr32}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr32(MiLenguajeParser.Expr32Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr32}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr32(MiLenguajeParser.Expr32Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr33}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr33(MiLenguajeParser.Expr33Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr33}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr33(MiLenguajeParser.Expr33Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr34}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr34(MiLenguajeParser.Expr34Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr34}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr34(MiLenguajeParser.Expr34Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr35}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr35(MiLenguajeParser.Expr35Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr35}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr35(MiLenguajeParser.Expr35Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr36}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr36(MiLenguajeParser.Expr36Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr36}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr36(MiLenguajeParser.Expr36Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr37}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr37(MiLenguajeParser.Expr37Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr37}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr37(MiLenguajeParser.Expr37Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr38}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr38(MiLenguajeParser.Expr38Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr38}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr38(MiLenguajeParser.Expr38Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr39}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr39(MiLenguajeParser.Expr39Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr39}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr39(MiLenguajeParser.Expr39Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr40}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr40(MiLenguajeParser.Expr40Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr40}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr40(MiLenguajeParser.Expr40Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr41}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr41(MiLenguajeParser.Expr41Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr41}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr41(MiLenguajeParser.Expr41Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr42}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr42(MiLenguajeParser.Expr42Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr42}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr42(MiLenguajeParser.Expr42Context ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#expr43}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr43(MiLenguajeParser.Expr43Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#expr43}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr43(MiLenguajeParser.Expr43Context ctx);
+	/**
 	 * Enter a parse tree produced by {@link MiLenguajeParser#literal}.
 	 * @param ctx the parse tree
 	 */

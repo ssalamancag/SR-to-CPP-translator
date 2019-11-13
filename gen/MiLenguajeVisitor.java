@@ -784,6 +784,264 @@ public interface MiLenguajeVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitExpr_num(MiLenguajeParser.Expr_numContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr1}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr1(MiLenguajeParser.Expr1Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr2}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr2(MiLenguajeParser.Expr2Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr3}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr3(MiLenguajeParser.Expr3Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr4}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr4(MiLenguajeParser.Expr4Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr5}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr5(MiLenguajeParser.Expr5Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr6}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr6(MiLenguajeParser.Expr6Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr7}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr7(MiLenguajeParser.Expr7Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr8}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr8(MiLenguajeParser.Expr8Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr9}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr9(MiLenguajeParser.Expr9Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr10}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr10(MiLenguajeParser.Expr10Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr11}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr11(MiLenguajeParser.Expr11Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr12}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr12(MiLenguajeParser.Expr12Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr13}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr13(MiLenguajeParser.Expr13Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr14}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr14(MiLenguajeParser.Expr14Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr15}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr15(MiLenguajeParser.Expr15Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr16}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr16(MiLenguajeParser.Expr16Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr17}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr17(MiLenguajeParser.Expr17Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr18}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr18(MiLenguajeParser.Expr18Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr19}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr19(MiLenguajeParser.Expr19Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr20}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr20(MiLenguajeParser.Expr20Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr21}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr21(MiLenguajeParser.Expr21Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr22}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr22(MiLenguajeParser.Expr22Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr23}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr23(MiLenguajeParser.Expr23Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr24}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr24(MiLenguajeParser.Expr24Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr25}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr25(MiLenguajeParser.Expr25Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr26}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr26(MiLenguajeParser.Expr26Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr27}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr27(MiLenguajeParser.Expr27Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr28}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr28(MiLenguajeParser.Expr28Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr29}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr29(MiLenguajeParser.Expr29Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr30}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr30(MiLenguajeParser.Expr30Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr31}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr31(MiLenguajeParser.Expr31Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr32}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr32(MiLenguajeParser.Expr32Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr33}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr33(MiLenguajeParser.Expr33Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr34}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr34(MiLenguajeParser.Expr34Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr35}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr35(MiLenguajeParser.Expr35Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr36}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr36(MiLenguajeParser.Expr36Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr37}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr37(MiLenguajeParser.Expr37Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr38}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr38(MiLenguajeParser.Expr38Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr39}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr39(MiLenguajeParser.Expr39Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr40}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr40(MiLenguajeParser.Expr40Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr41}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr41(MiLenguajeParser.Expr41Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr42}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr42(MiLenguajeParser.Expr42Context ctx);
+	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#expr43}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitExpr43(MiLenguajeParser.Expr43Context ctx);
+	/**
 	 * Visit a parse tree produced by {@link MiLenguajeParser#literal}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

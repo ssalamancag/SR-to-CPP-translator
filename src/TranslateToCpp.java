@@ -100,6 +100,21 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
         }
     }
 
+    public String space() {
+        int i = 0;
+        String cadena = pointer.peek().toString();
+        if (pointer.peek().toString().contains("\n")){
+            int pos = pointer.peek().lastIndexOf("\n");
+            cadena = cadena.substring(pos + 1);
+        }
+        for (i = 0; i < cadena.length(); i++) {
+            if (cadena.charAt(i) != ' ' && cadena.charAt(i) != '\t') {
+                return cadena.substring(0, i);
+            }
+        }
+        return "";
+    }
+
     @Override public void enterInicio(MiLenguajeParser.InicioContext ctx) {
         pointer.peek().append("int main() {\n\t");
 
@@ -155,12 +170,10 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
 
     @Override public void enterExpr_num(MiLenguajeParser.Expr_numContext ctx) {
         replaceLast("var","int");
-        pointer.peek().append(ctx.NUM() + "; ");
+        pointer.peek().append(ctx.NUM());
     }
 
     @Override public void enterVar_att2(MiLenguajeParser.Var_att2Context ctx) {
-        replaceLast(" ","");
-        pointer.peek().append(";");
     }
 
     @Override public void enterBasic_type1(MiLenguajeParser.Basic_type1Context ctx) {
@@ -177,6 +190,188 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
 
     @Override public void enterBasic_type5(MiLenguajeParser.Basic_type5Context ctx) {
         replaceLast("var","float");
+    }
+
+    @Override public void enterExpr1(MiLenguajeParser.Expr1Context ctx) {
+        pointer.peek().append(ctx.TK_ID() + " ");
+    }
+
+    @Override public void enterExpr2(MiLenguajeParser.Expr2Context ctx) {
+        pointer.peek().append(ctx.CADENA() + " ");
+    }
+
+    @Override public void enterExpr3(MiLenguajeParser.Expr3Context ctx) {
+        pointer.peek().append(ctx.TK_LPAREN() + " ");
+    }
+
+    @Override public void enterExpr4(MiLenguajeParser.Expr4Context ctx) {
+        pointer.peek().append(ctx.TK_RPAREN() + " ");
+    }
+
+    @Override public void enterExpr5(MiLenguajeParser.Expr5Context ctx) {
+        pointer.peek().append(ctx.TK_INCR() + " ");
+    }
+
+    @Override public void enterExpr6(MiLenguajeParser.Expr6Context ctx) {
+        pointer.peek().append(ctx.TK_DECR() + " ");
+    }
+
+    @Override public void enterExpr7(MiLenguajeParser.Expr7Context ctx) {
+        pointer.peek().append(ctx.TK_HAT() + " ");
+    }
+
+    @Override public void enterExpr8(MiLenguajeParser.Expr8Context ctx) {
+        pointer.peek().append(ctx.TK_PERIOD() + " ");
+    }
+
+    @Override public void enterExpr9(MiLenguajeParser.Expr9Context ctx) {
+        pointer.peek().append(ctx.TK_LBRACKET() + " ");
+    }
+
+    @Override public void enterExpr10(MiLenguajeParser.Expr10Context ctx) {
+        pointer.peek().append(ctx.TK_RBRACKET() + " ");
+    }
+
+    @Override public void enterExpr11(MiLenguajeParser.Expr11Context ctx) {
+        pointer.peek().append(ctx.TK_EXPON() + " ");
+    }
+
+    @Override public void enterExpr12(MiLenguajeParser.Expr12Context ctx) {
+        pointer.peek().append(ctx.TK_ASTER() + " ");
+    }
+
+    @Override public void enterExpr13(MiLenguajeParser.Expr13Context ctx) {
+        pointer.peek().append(ctx.TK_DIV() + " ");
+    }
+
+    @Override public void enterExpr14(MiLenguajeParser.Expr14Context ctx) {
+        pointer.peek().append(ctx.TK_MOD() + " ");
+    }
+
+    @Override public void enterExpr15(MiLenguajeParser.Expr15Context ctx) {
+        pointer.peek().append(ctx.TK_REMDR() + " ");
+    }
+
+    @Override public void enterExpr16(MiLenguajeParser.Expr16Context ctx) {
+        pointer.peek().append(ctx.TK_PLUS() + " ");
+    }
+
+    @Override public void enterExpr17(MiLenguajeParser.Expr17Context ctx) {
+        pointer.peek().append(ctx.TK_MINUS() + " ");
+    }
+
+    @Override public void enterExpr18(MiLenguajeParser.Expr18Context ctx) {
+        pointer.peek().append(ctx.TK_CONCAT() + " ");
+    }
+
+    @Override public void enterExpr19(MiLenguajeParser.Expr19Context ctx) {
+        pointer.peek().append(ctx.TK_EQ() + " ");
+    }
+
+    @Override public void enterExpr20(MiLenguajeParser.Expr20Context ctx) {
+        pointer.peek().append(ctx.TK_NE() + " ");
+    }
+
+    @Override public void enterExpr21(MiLenguajeParser.Expr21Context ctx) {
+        pointer.peek().append(ctx.TK_GE() + " ");
+    }
+
+    @Override public void enterExpr22(MiLenguajeParser.Expr22Context ctx) {
+        pointer.peek().append(ctx.TK_LE() + " ");
+    }
+
+    @Override public void enterExpr23(MiLenguajeParser.Expr23Context ctx) {
+        pointer.peek().append(ctx.TK_GT() + " ");
+    }
+
+    @Override public void enterExpr24(MiLenguajeParser.Expr24Context ctx) {
+        pointer.peek().append(ctx.TK_LT() + " ");
+    }
+
+    @Override public void enterExpr25(MiLenguajeParser.Expr25Context ctx) {
+        pointer.peek().append(ctx.TK_AND() + " ");
+    }
+
+    @Override public void enterExpr26(MiLenguajeParser.Expr26Context ctx) {
+        pointer.peek().append(ctx.TK_OR() + " ");
+    }
+
+    @Override public void enterExpr27(MiLenguajeParser.Expr27Context ctx) {
+        pointer.peek().append(ctx.TK_OR_() + " ");
+    }
+
+    @Override public void enterExpr28(MiLenguajeParser.Expr28Context ctx) {
+        pointer.peek().append(ctx.TK_XOR() + " ");
+    }
+
+    @Override public void enterExpr29(MiLenguajeParser.Expr29Context ctx) {
+        pointer.peek().append(ctx.TK_RSHIFT() + " ");
+    }
+
+    @Override public void enterExpr30(MiLenguajeParser.Expr30Context ctx) {
+        pointer.peek().append(ctx.TK_LSHIFT() + " ");
+    }
+
+    @Override public void enterExpr31(MiLenguajeParser.Expr31Context ctx) {
+        pointer.peek().append(ctx.TK_SWAP() + " ");
+    }
+
+    @Override public void enterExpr32(MiLenguajeParser.Expr32Context ctx) {
+        pointer.peek().append("=" + " ");
+    }
+
+    @Override public void enterExpr33(MiLenguajeParser.Expr33Context ctx) {
+        pointer.peek().append(ctx.TK_AUG_PLUS() + " ");
+    }
+
+    @Override public void enterExpr34(MiLenguajeParser.Expr34Context ctx) {
+        pointer.peek().append(ctx.TK_AUG_MINUS() + " ");
+    }
+
+    @Override public void enterExpr35(MiLenguajeParser.Expr35Context ctx) {
+        pointer.peek().append(ctx.TK_AUG_ASTER() + " ");
+    }
+
+    @Override public void enterExpr36(MiLenguajeParser.Expr36Context ctx) {
+        pointer.peek().append(ctx.TK_AUG_DIV() + " ");
+    }
+
+    @Override public void enterExpr37(MiLenguajeParser.Expr37Context ctx) {
+        pointer.peek().append(ctx.TK_AUG_REMDR() + " ");
+    }
+
+    @Override public void enterExpr38(MiLenguajeParser.Expr38Context ctx) {
+        pointer.peek().append(ctx.TK_AUG_EXPON() + " ");
+    }
+
+    @Override public void enterExpr39(MiLenguajeParser.Expr39Context ctx) {
+        pointer.peek().append(ctx.TK_AUG_OR() + " ");
+    }
+
+    @Override public void enterExpr40(MiLenguajeParser.Expr40Context ctx) {
+        pointer.peek().append(ctx.TK_AUG_AND() + " ");
+    }
+
+    @Override public void enterExpr41(MiLenguajeParser.Expr41Context ctx) {
+        pointer.peek().append(ctx.TK_AUG_CONCAT() + " ");
+    }
+
+    @Override public void enterExpr42(MiLenguajeParser.Expr42Context ctx) {
+        pointer.peek().append(ctx.TK_AUG_RSHIFT() + " ");
+    }
+
+    @Override public void enterExpr43(MiLenguajeParser.Expr43Context ctx) {
+        pointer.peek().append(ctx.TK_AUG_LSHIFT() + " ");
+    }
+
+    @Override public void exitSpec_stmt_ls(MiLenguajeParser.Spec_stmt_lsContext ctx) {
+        replaceLast(" ","");
+        pointer.peek().append(";\n" + space());
+    }
+
+    @Override public void exitBody_stmt_ls(MiLenguajeParser.Body_stmt_lsContext ctx) {
+        replaceLast(" ","");
+        pointer.peek().append(";\n" + space());
     }
 
     @Override public void visitTerminal(TerminalNode node) {
