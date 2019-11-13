@@ -506,6 +506,13 @@ public class MiLenguajeBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitGuarded_cmd1(MiLenguajeParser.Guarded_cmd1Context ctx) { return visitChildren(ctx); }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitElse_cmd_opt(MiLenguajeParser.Else_cmd_optContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}

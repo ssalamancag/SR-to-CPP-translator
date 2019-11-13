@@ -707,6 +707,16 @@ public interface MiLenguajeListener extends ParseTreeListener {
 	 */
 	void exitGuarded_cmd(MiLenguajeParser.Guarded_cmdContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#guarded_cmd1}.
+	 * @param ctx the parse tree
+	 */
+	void enterGuarded_cmd1(MiLenguajeParser.Guarded_cmd1Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#guarded_cmd1}.
+	 * @param ctx the parse tree
+	 */
+	void exitGuarded_cmd1(MiLenguajeParser.Guarded_cmd1Context ctx);
+	/**
 	 * Enter a parse tree produced by {@link MiLenguajeParser#else_cmd_opt}.
 	 * @param ctx the parse tree
 	 */
