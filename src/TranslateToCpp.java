@@ -164,7 +164,7 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
     }
 
     @Override public void enterSpec_body(MiLenguajeParser.Spec_bodyContext ctx) {
-        bodies.add(new StringBuilder("class body" + ctx.TK_ID() + "(" + ") {\n\tpublic:\n\t\t"));
+        bodies.add(new StringBuilder("class body" + ctx.TK_ID() + "(" + ctx.TK_ID() +" " + ctx.TK_ID() + ") {\n\tpublic:\n\t\t"));
         pointer.add(bodies.get(bodies.size()-1));
     }
 
