@@ -11,7 +11,7 @@ public class Main {
                 lexer = new MiLenguajeLexer(CharStreams.fromFileName(args[0]));
             else
                 lexer = new MiLenguajeLexer(CharStreams.fromStream(System.in));*/
-            lexer = new MiLenguajeLexer(CharStreams.fromFileName("input/2.txt"));
+            lexer = new MiLenguajeLexer(CharStreams.fromFileName("input/10.txt"));
 
             // Crear objeto que realiza el reorrido de tokens
             CommonTokenStream tokens = new CommonTokenStream(lexer);

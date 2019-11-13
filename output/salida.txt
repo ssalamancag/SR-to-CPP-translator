@@ -2,21 +2,23 @@
 
 using namespace std;
 
-class sizes{
+class factorial{
 	public:
-		int N = 10 ;
-		int PR = 2 ;
-		int S ;
-		
+		()(k )f if(k < 0 ){f = -1 k = 0 or k = 1 ){f = 1 k > 1 ){f = k * fact k - 1 };
+		fact ;
+		int n ;
+		cout <<"Cu�ntos factoriales hay? " ;
+		cin  >>n ;
+		cout <<"a" ;
+		for ( int i = 1 ; i <= n ; i++ ) {
+			cout <<i "el factorial es " fact i 
+		}
+;
+
 }
 
-class bodysizes(sizes sizes) {
+class bodynull() {
 	public:
-		getarg 1 N ;
-		getarg 2 PR ;
-		S = N / PR ;
-		if(N mod PR != 0 ){v("N must be a multiple of PR" )( 1 ) };
-		if(M mod PR != 0 ){write("N must be a multiple of PR" )( 1 ) };
 		
 }
 

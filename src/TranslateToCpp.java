@@ -200,7 +200,15 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
     }
 
     @Override public void enterExpr1(MiLenguajeParser.Expr1Context ctx) {
-        pointer.peek().append(ctx.TK_ID() + " ");
+        if(ctx.TK_ID().toString().equals("write") || ctx.TK_ID().toString().equals("writes") ){
+            pointer.peek().append("cout <<");
+        }else if(ctx.TK_ID().toString().equals("read")){
+            pointer.peek().append("cin  >>");
+        }
+        else{
+            pointer.peek().append(ctx.TK_ID() + " ");
+        }
+
     }
 
     @Override public void enterExpr2(MiLenguajeParser.Expr2Context ctx) {
@@ -433,17 +441,26 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
     }
 
     @Override public void enterFunction_stmt(MiLenguajeParser.Function_stmtContext ctx){
-        pointer.peek().append(ctx.TK_ID() + "(" );
+        if(ctx.TK_ID().toString().equals("write")){
+            pointer.peek().append("cout <<");
+        }else if(ctx.TK_ID().toString().equals("read")){
+            pointer.peek().append("cin  >>");
+        }
+        else{
+            pointer.peek().append(ctx.TK_ID() + "(" );
+        }
     }
 
     @Override public void exitFunction_stmt(MiLenguajeParser.Function_stmtContext ctx){
-        pointer.peek().append(")");
+        if(!ctx.TK_ID().toString().equals("write") && !ctx.TK_ID().toString().equals("read")){
+            pointer.peek().append(")");
+        }
     }
 
     @Override public void enterGuarded_cmd1(MiLenguajeParser.Guarded_cmd1Context ctx){
         pointer.peek().append("){");
     }
-@Override public void enterProc(MiLenguajeParser.ProcContext ctx){
+    @Override public void enterProc(MiLenguajeParser.ProcContext ctx){
         functions.add(new StringBuilder("void  " + ctx.TK_ID() ));
         pointer.add(functions.get(functions.size()-1));
     }
