@@ -416,6 +416,26 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
         pointer.peek().append(ctx.TK_RPAREN());
     }
 
+    @Override public void enterProc(MiLenguajeParser.ProcContext ctx){
+        functions.add(new StringBuilder("void  " + ctx.TK_ID() ));
+        pointer.add(functions.get(functions.size()-1));
+    }
+
+    @Override public void exitProc(MiLenguajeParser.ProcContext ctx){
+        pointer.pop().append("\n}\n");
+    }
+
+    @Override public void enterParam_names(MiLenguajeParser.Param_namesContext ctx){
+        pointer.peek().append(ctx.TK_LPAREN());
+    }
+
+    @Override public void exitParam_names(MiLenguajeParser.Param_namesContext ctx){
+        pointer.peek().append(ctx.TK_RPAREN()+ "{\n");
+    }
+
+    @Override public void enterId_lp(MiLenguajeParser.Id_lpContext ctx){
+        pointer.peek().append(ctx.TK_ID());
+    }
     @Override public void visitTerminal(TerminalNode node) {
 
         /*switch (node.getSymbol().getType()) {

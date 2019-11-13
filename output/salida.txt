@@ -6,18 +6,18 @@ class sizes{
 	public:
 		int N = 10 ;
 		int PR = 2 ;
-		bool S ;
+		int S ;
 		
 }
 
 class bodysizes(sizes sizes) {
 	public:
+		getarg 1 N ;
+		getarg 2 PR ;
 		S = N / PR ;
-		for ( int i = 1 ; i <= n ; i++ ) {
-			i "el factorial es " fact i 
-		}
-;
-
+		N mod PR != 0 "N must be a multiple of PR" ( 1 ) ;
+		M mod PR != 0 "N must be a multiple of PR" ( 1 ) ;
+		
 }
 
 int main() {
