@@ -1,4 +1,4 @@
-// Generated from C:/Users/acer/Google Drive/CESAR/3. UNAL/2. MATERIAS/28. LENGUAJES DE PROGRAMACIÓN/SR-to-CPP-translator/grammar\MiLenguaje.g4 by ANTLR 4.7.2
+// Generated from C:/Users/sebastian/Desktop/SR-to-CPP-translator/grammar\MiLenguaje.g4 by ANTLR 4.7.2
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -436,6 +436,16 @@ public interface MiLenguajeListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitV_stmt(MiLenguajeParser.V_stmtContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link MiLenguajeParser#v_stmt1}.
+	 * @param ctx the parse tree
+	 */
+	void enterV_stmt1(MiLenguajeParser.V_stmt1Context ctx);
+	/**
+	 * Exit a parse tree produced by {@link MiLenguajeParser#v_stmt1}.
+	 * @param ctx the parse tree
+	 */
+	void exitV_stmt1(MiLenguajeParser.V_stmt1Context ctx);
 	/**
 	 * Enter a parse tree produced by {@link MiLenguajeParser#input_stmt}.
 	 * @param ctx the parse tree

@@ -196,9 +196,12 @@ explicit_call:
 	    ;
 
 v_stmt:
-	    TK_V TK_LPAREN expr TK_RPAREN
+	    v_stmt1 TK_LPAREN expr TK_RPAREN
 	    ;
 
+v_stmt1:
+        TK_V
+        ;
 input_stmt:
 	    TK_IN in_cmd_lp else_cmd_opt TK_NI
 	    ;

@@ -471,10 +471,10 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
             pointer.peek().append(")");
         }
     }
-
+/*
     @Override public void enterGuarded_cmd1(MiLenguajeParser.Guarded_cmd1Context ctx){
         pointer.peek().append("){");
-    }
+    }*/
     @Override public void enterProc(MiLenguajeParser.ProcContext ctx){
         functions.add(new StringBuilder("void  " + ctx.TK_ID() ));
         pointer.add(functions.get(functions.size()-1));
@@ -492,6 +492,13 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
         pointer.peek().append(ctx.TK_RPAREN()+ "{\n");
     }
 
+    @Override public  void enterV_stmt1(MiLenguajeParser.V_stmt1Context ctx){
+        pointer.peek().append("cout <<");
+    }
+
+    @Override public void exitV_stmt(MiLenguajeParser.V_stmtContext ctx){
+        pointer.peek().append(";");
+    }
     @Override public void visitTerminal(TerminalNode node) {
 
         /*switch (node.getSymbol().getType()) {
