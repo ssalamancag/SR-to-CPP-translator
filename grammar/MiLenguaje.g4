@@ -310,8 +310,11 @@ guarded_cmd_lp:
 
 guarded_cmd:
 	        expr TK_OR_ block
-	    |   expr TK_ARROW block
+	    |   expr guarded_cmd1 block
 	;
+
+guarded_cmd1:  TK_ARROW
+    ;
 
 else_cmd_opt:
 	    vacio

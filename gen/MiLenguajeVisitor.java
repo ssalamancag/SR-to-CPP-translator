@@ -430,6 +430,12 @@ public interface MiLenguajeVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitGuarded_cmd(MiLenguajeParser.Guarded_cmdContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link MiLenguajeParser#guarded_cmd1}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitGuarded_cmd1(MiLenguajeParser.Guarded_cmd1Context ctx);
+	/**
 	 * Visit a parse tree produced by {@link MiLenguajeParser#else_cmd_opt}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

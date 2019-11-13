@@ -24,6 +24,9 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
     // Apuntador
     Stack<StringBuilder> pointer;
 
+    // Variables auxiliares
+    String aux;
+
     // Constructor
     public TranslateToCpp() {
         try {
@@ -115,6 +118,10 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
         return "";
     }
 
+    public String lessSpace() {
+        return space().substring(0, space().length() - 1);
+    }
+
     @Override public void enterInicio(MiLenguajeParser.InicioContext ctx) {
         pointer.peek().append("int main() {\n\t");
 
@@ -144,7 +151,7 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
     }
 
     @Override public void enterSpec_body(MiLenguajeParser.Spec_bodyContext ctx) {
-        bodies.add(new StringBuilder("class body" + ctx.TK_ID() + "(" + ") {\n\tpublic:\n\t\t"));
+        bodies.add(new StringBuilder("class body" + ctx.TK_ID() + "(" + ctx.TK_ID() +" " + ctx.TK_ID() + ") {\n\tpublic:\n\t\t"));
         pointer.add(bodies.get(bodies.size()-1));
     }
 
@@ -164,33 +171,13 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
         pointer.peek().append(ctx.TK_ID() + " ");
     }
 
-    @Override public void enterProc(MiLenguajeParser.ProcContext ctx){
-        functions.add(new StringBuilder("void  " + ctx.TK_ID() ));
-        pointer.add(functions.get(functions.size()-1));
-    }
-
-    @Override public void exitProc(MiLenguajeParser.ProcContext ctx){
-        pointer.pop().append("\n}\n");
-    }
-
-    @Override public void enterParam_names(MiLenguajeParser.Param_namesContext ctx){
-        pointer.peek().append(ctx.TK_LPAREN());
-    }
-
-    @Override public void exitParam_names(MiLenguajeParser.Param_namesContext ctx){
-        pointer.peek().append(ctx.TK_RPAREN()+ "{\n");
-    }
-
-    @Override public void enterId_lp(MiLenguajeParser.Id_lpContext ctx){
-        pointer.peek().append(ctx.TK_ID());
-    }
     @Override public void enterVar_att1(MiLenguajeParser.Var_att1Context ctx) {
         pointer.peek().append("=" + " ");
     }
 
     @Override public void enterExpr_num(MiLenguajeParser.Expr_numContext ctx) {
         replaceLast("var","int");
-        pointer.peek().append(ctx.NUM());
+        pointer.peek().append(ctx.NUM() + " ");
     }
 
     @Override public void enterVar_att2(MiLenguajeParser.Var_att2Context ctx) {
@@ -385,50 +372,50 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
     }
 
     @Override public void exitSpec_stmt_ls(MiLenguajeParser.Spec_stmt_lsContext ctx) {
-        replaceLast(" ","");
         pointer.peek().append(";\n" + space());
     }
 
     @Override public void exitBody_stmt_ls(MiLenguajeParser.Body_stmt_lsContext ctx) {
-        replaceLast(" ","");
         pointer.peek().append(";\n" + space());
     }
 
-    @Override public void enterIf_stmt(MiLenguajeParser.If_stmtContext ctx){
-        pointer.peek().append(ctx.TK_IF() + "(" );
+    @Override public void enterFor_all_stmt1(MiLenguajeParser.For_all_stmt1Context ctx) {
+        pointer.peek().append("for" + " ( var ");
     }
 
-    @Override public void exitIf_stmt(MiLenguajeParser.If_stmtContext ctx){
-        pointer.peek().append("}");
+    @Override public void enterFor_all_stmt2(MiLenguajeParser.For_all_stmt2Context ctx) {
+        pointer.peek().append(")" + " {\n" + space() + "\t");
     }
 
-    @Override public void enterV_stmt(MiLenguajeParser.V_stmtContext ctx){
-        pointer.peek().append(ctx.TK_V() + "(" );
+    @Override public void enterFor_all_stmt3(MiLenguajeParser.For_all_stmt3Context ctx) {
+        pointer.peek().append("\n" + lessSpace() + "}" + "\n");
     }
 
-    @Override public void exitV_stmt(MiLenguajeParser.V_stmtContext ctx){
-        pointer.peek().append(")" );
+    @Override public void enterQuantifier1(MiLenguajeParser.Quantifier1Context ctx) {
+        aux = ctx.TK_ID().toString();
+        pointer.peek().append(ctx.TK_ID() + " ");
     }
 
-    @Override public void enterFunction_stmt(MiLenguajeParser.Function_stmtContext ctx){
-        pointer.peek().append(ctx.TK_ID() + "(" );
+    @Override public void enterQuantifier2(MiLenguajeParser.Quantifier2Context ctx) {
+        pointer.peek().append("= ");
     }
 
-    @Override public void exitFunction_stmt(MiLenguajeParser.Function_stmtContext ctx){
-        pointer.peek().append(")");
+    @Override public void enterDirection1(MiLenguajeParser.Direction1Context ctx) {
+        pointer.peek().append("; " + aux + " <= ");
     }
 
-    @Override public void enterGuarded_cmd1(MiLenguajeParser.Guarded_cmd1Context ctx){
-        pointer.peek().append("){");
+    @Override public void exitQuantifier3(MiLenguajeParser.Quantifier3Context ctx) {
+        pointer.peek().append("; " + aux + "++ ");
     }
 
-    @Override public void enterParen_list(MiLenguajeParser.Paren_listContext ctx){
+    @Override public void enterParameters(MiLenguajeParser.ParametersContext ctx){
         pointer.peek().append(ctx.TK_LPAREN());
     }
 
-    @Override public void exitParen_list(MiLenguajeParser.Paren_listContext ctx){
-        pointer.peek().append(ctx.TK_RPAREN() + " ");
+    @Override public void exitParameters(MiLenguajeParser.ParametersContext ctx){
+        pointer.peek().append(ctx.TK_RPAREN());
     }
+
     @Override public void visitTerminal(TerminalNode node) {
 
         /*switch (node.getSymbol().getType()) {

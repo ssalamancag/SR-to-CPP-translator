@@ -855,6 +855,18 @@ public class MiLenguajeBaseListener implements MiLenguajeListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterGuarded_cmd1(MiLenguajeParser.Guarded_cmd1Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitGuarded_cmd1(MiLenguajeParser.Guarded_cmd1Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterElse_cmd_opt(MiLenguajeParser.Else_cmd_optContext ctx) { }
 	/**
 	 * {@inheritDoc}
