@@ -292,8 +292,11 @@ if_stmt:
 	    ;
 
 do_stmt:
-	    TK_DO guarded_cmd_lp else_cmd_opt TK_OD
+	    do_stmt1 guarded_cmd_lp else_cmd_opt do_stmt2
 	;
+
+do_stmt1 : TK_DO;
+do_stmt2 : TK_OD;
 
 for_all_stmt:
         for_all_stmt1 quantifier_lp for_all_stmt2 block for_all_stmt3
@@ -863,9 +866,11 @@ block_item:
 	  //  vacio  |
 	   decl
 	|   stmt
-	|   expr
+	|   block_item1
 	|   import_clause
 	;
+
+block_item1 : expr;
 
 id_ls:
         id_lp

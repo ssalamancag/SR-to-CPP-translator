@@ -783,6 +783,30 @@ public class MiLenguajeBaseListener implements MiLenguajeListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterDo_stmt1(MiLenguajeParser.Do_stmt1Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDo_stmt1(MiLenguajeParser.Do_stmt1Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDo_stmt2(MiLenguajeParser.Do_stmt2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDo_stmt2(MiLenguajeParser.Do_stmt2Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterFor_all_stmt(MiLenguajeParser.For_all_stmtContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -2530,6 +2554,18 @@ public class MiLenguajeBaseListener implements MiLenguajeListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitBlock_item(MiLenguajeParser.Block_itemContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBlock_item1(MiLenguajeParser.Block_item1Context ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBlock_item1(MiLenguajeParser.Block_item1Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
