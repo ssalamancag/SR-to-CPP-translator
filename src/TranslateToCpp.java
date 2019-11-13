@@ -145,9 +145,12 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
         write();
     }
 
+    String lastID;
     @Override public void enterGlobal(MiLenguajeParser.GlobalContext ctx) {
         globals.add(new StringBuilder("class " + ctx.TK_ID() + " {\n\tpublic:\n\t\t" + ctx.TK_ID() + "() {\n\t\t\t"));
         pointer.add(globals.get(globals.size()-1));
+        main.append(ctx.TK_ID() + "();\n\t");
+        lastID = ctx.TK_ID().toString();
     }
 
     @Override public void exitGlobal(MiLenguajeParser.GlobalContext ctx) {
@@ -158,6 +161,8 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
     @Override public void enterResource_specification(MiLenguajeParser.Resource_specificationContext ctx) {
         speficications.add(new StringBuilder("class " + ctx.TK_ID() + " {\n\tpublic:\n\t\t" + ctx.TK_ID() + "() {\n\t\t\t"));
         pointer.add(speficications.get(speficications.size()-1));
+        main.append(ctx.TK_ID() + "();\n\t");
+        lastID = ctx.TK_ID().toString();
     }
 
     @Override public void exitResource_specification(MiLenguajeParser.Resource_specificationContext ctx) {
@@ -168,6 +173,7 @@ public class TranslateToCpp extends MiLenguajeBaseListener {
     @Override public void enterSpec_body(MiLenguajeParser.Spec_bodyContext ctx) {
         bodies.add(new StringBuilder("class body" + ctx.TK_ID() + " {\n\tpublic:\n\t\tbody" + ctx.TK_ID() + "(" + ctx.TK_ID() + " " + ctx.TK_ID() + ") {\n\t\t\t"));
         pointer.add(bodies.get(bodies.size()-1));
+        main.append("body" + ctx.TK_ID() + "(" + lastID + ");\n\t");
     }
 
     @Override public void exitSpec_body(MiLenguajeParser.Spec_bodyContext ctx) {

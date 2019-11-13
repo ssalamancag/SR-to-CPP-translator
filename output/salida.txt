@@ -44,5 +44,7 @@ int function fact (int k ) {
 }
 
 int main() {
+	sizes();
+	bodysizes(sizes);
 	
 }
